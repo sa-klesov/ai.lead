@@ -20,6 +20,7 @@ body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth; /* Для плавной прокрутки */
 }
 
 .container {
@@ -43,6 +44,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: var(--text-primary);
 }
 
 .logo {
@@ -70,22 +76,13 @@ body {
 .cta-button {
     display: inline-block;
     background-color: var(--accent-color);
+    color: var(--bg-color); /* ЕДИНЫЙ СТИЛЬ: Текст на всех кнопках теперь темный для контраста */
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-/* Стили для кнопок */
-.nav-cta {
-    color: #FFFFFF; /* Белый текст для кнопки в навигации */
-}
-
-.hero-cta {
-     color: var(--bg-color); /* Темный текст для основной кнопки */
-}
-
 
 .cta-button:hover {
     transform: translateY(-2px);

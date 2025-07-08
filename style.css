@@ -1,100 +1,225 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI.LEAD — Сервис B2B email-рассылок на базе ИИ</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
+:root {
+    --bg-color: #0B1120;
+    --bg-light: #1A2035;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --text-primary: #FFFFFF;
+    --text-secondary: #A0AEC0;
+    --accent-color: #38BDF8;
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
 
-    <header class="main-header">
-        <div class="container">
-            <div class="logo">AI.LEAD</div>
-            <nav class="main-nav">
-                <a href="#process">Процесс</a>
-                <a href="#features">Возможности</a>
-                <a href="#contact" class="cta-button nav-cta">Заказать</a>
-            </nav>
-        </div>
-    </header>
+/* Обнуление и базовые стили */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>Ваши холодные письма<br>станут главными входящими</h1>
-                    <p>Сервис **AI.LEAD** создает B2B email-кампании на базе ИИ, которые открывают двери к нужным людям. Получайте не клики, а приглашения на встречу.</p>
-                    <a href="#contact" class="cta-button hero-cta">Получить бесплатную тестовую кампанию</a>
-                </div>
-            </div>
-        </section>
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
-        <section id="process" class="process-section">
-            <div class="container">
-                <h2>Отправка писем — это просто. Мы создаем диалог.</h2>
-                <p class="section-subtitle">Наш процесс из 4 шагов гарантирует, что каждое сообщение будет релевантным и эффективным.</p>
-                <div class="process-grid">
-                    <div class="process-step">
-                        <div class="step-number">01</div>
-                        <h3>AI-Анализ</h3>
-                        <p>Наш ИИ изучает сайт, новости и проекты каждого получателя, чтобы найти уникальный "крючок" для персонализации.</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">02</div>
-                        <h3>Генерация</h3>
-                        <p>Система пишет уникальные темы и тексты, которые выглядят так, будто вы написали их вручную после долгого изучения клиента.</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">03</div>
-                        <h3>Доставка</h3>
-                        <p>Мы используем технические ухищрения (проверка MX, ротация SMTP), чтобы письма попадали точно во "Входящие".</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">04</div>
-                        <h3>Аналитика</h3>
-                        <p>Вы получаете доступ к интерактивной панели, где видите всю воронку: от доставки до клика и открытия.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
 
-        <section id="features" class="features-section">
-            <div class="container">
-                 <h2>Больше, чем просто рассылка</h2>
-                 <div class="features-grid">
-                     <div class="feature-item">
-                         <h3>Встречи, а не просто открытия</h3>
-                         <p>Наша цель — не цифры в отчете, а реальные ответы и назначеннные встречи для вашего отдела продаж.</p>
-                     </div>
-                     <div class="feature-item">
-                         <h3>Решения на основе данных</h3>
-                         <p>Узнайте, в какие дни и часы ваша аудитория наиболее активна, и какие темы писем работают лучше всего.</p>
-                     </div>
-                      <div class="feature-item">
-                         <h3>Полный аутсорс</h3>
-                         <p>Мы берем на себя всю рутину: от сбора базы до аналитики. Вы получаете только результат.</p>
-                     </div>
-                 </div>
-            </div>
-        </section>
-    </main>
+/* Шапка */
+.main-header {
+    background-color: rgba(11, 17, 32, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
-    <footer id="contact" class="contact-section">
-        <div class="container">
-            <h2>Начнем работу?</h2>
-            <p class="section-subtitle">Мы уверены в своем продукте, поэтому готовы провести для вас бесплатную тестовую кампанию на 30 контактов. Никаких обязательств. Только результат.</p>
-            <div class="contact-details">
-                <p><strong>Свяжитесь с нами, чтобы обсудить детали:</strong></p>
-                <p><strong>Email:</strong> <a href="mailto:s.a.klesov@gmail.com">s.a.klesov@gmail.com</a></p>
-                <p><strong>Телефон / Telegram:</strong> <a href="https://t.me/+375445516200" target="_blank">+375 44 551 62 00</a></p>
-            </div>
-            <p class="copyright">© 2025. Все права защищены.</p>
-        </div>
-    </footer>
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-</body>
-</html>
+.logo {
+    font-size: 1.75rem;
+    font-weight: 800;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--text-primary);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: #FFFFFF; /* ИЗМЕНЕНИЕ: Текст сделан белым для контраста */
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+}
+
+/* Главный экран */
+.hero {
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 1.5rem 0;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+}
+
+.hero-cta {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+/* Секции */
+.process-section, .features-section {
+    padding: 6rem 0;
+    border-top: 1px solid var(--border-color);
+}
+
+h2 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    text-align: center;
+    margin: 0 0 1rem 0;
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+}
+
+/* Сетка процесса */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.process-step {
+    background-color: var(--bg-light);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.step-number {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.process-step h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+}
+
+.process-step p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Сетка возможностей */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.feature-item {
+    padding: 2rem;
+    border-left: 3px solid var(--accent-color);
+}
+
+.feature-item h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+}
+
+.feature-item p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Подвал */
+.contact-section {
+    padding: 6rem 0;
+    background-color: var(--bg-light);
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.contact-details {
+    margin-top: 2rem;
+}
+
+.contact-details p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin: 0.5rem 0;
+}
+
+.contact-details a {
+    color: var(--accent-color);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.copyright {
+    margin-top: 4rem;
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .main-nav { display: none; }
+    .hero-content h1 { font-size: 2.5rem; }
+    h2 { font-size: 2.25rem; }
+}

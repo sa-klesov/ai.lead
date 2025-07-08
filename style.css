@@ -77,6 +77,7 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Стили для кнопок */
 .nav-cta {
     color: #FFFFFF; /* Белый текст для кнопки в навигации */
 }

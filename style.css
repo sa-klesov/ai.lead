@@ -5,7 +5,6 @@
     --text-primary: #FFFFFF;
     --text-secondary: #A0AEC0;
     --accent-color: #38BDF8;
-    --danger-color: #EF4444; /* Новый красный цвет */
     --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -21,7 +20,7 @@ body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* Для плавной прокрутки */
 }
 
 .container {
@@ -76,33 +75,18 @@ body {
 
 .cta-button {
     display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--bg-color); /* ЕДИНЫЙ СТИЛЬ: Текст на всех кнопках теперь темный для контраста */
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-/* Стили для кнопок */
-.nav-cta {
-    background-color: var(--danger-color); /* Красный цвет для кнопки в навигации */
-    color: #FFFFFF; 
-}
-
-.hero-cta {
-     background-color: var(--accent-color);
-     color: var(--bg-color);
-}
-
 
 .cta-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
-}
-
-.nav-cta:hover {
-    background-color: #DC2626; /* Более темный красный при наведении */
-    box-shadow: 0 10px 20px rgba(239, 68, 68, 0.2);
 }
 
 /* Главный экран */
@@ -131,7 +115,7 @@ body {
 }
 
 /* Секции */
-.process-section, .features-section {
+.process-section, .features-section, .pricing-section {
     padding: 6rem 0;
     border-top: 1px solid var(--border-color);
 }
@@ -182,6 +166,71 @@ h2 {
     color: var(--text-secondary);
     line-height: 1.6;
     margin: 0;
+}
+
+/* Стили для тарифов */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.pricing-card {
+    background-color: var(--bg-light);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card.popular {
+    border-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+.pricing-card h3 {
+    font-size: 1.75rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--accent-color);
+}
+
+.pricing-card-desc {
+    color: var(--text-secondary);
+    min-height: 60px;
+    margin-bottom: 1.5rem;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.price-setup {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.pricing-card ul li {
+    margin-bottom: 1rem;
+}
+
+.enterprise-plan {
+    margin-top: 4rem;
+    padding: 2rem;
+    background-color: var(--bg-light);
+    border-radius: 12px;
+    text-align: center;
 }
 
 /* Сетка возможностей */
@@ -244,4 +293,7 @@ h2 {
     .main-nav { display: none; }
     .hero-content h1 { font-size: 2.5rem; }
     h2 { font-size: 2.25rem; }
+    .pricing-card.popular {
+        transform: scale(1);
+    }
 }

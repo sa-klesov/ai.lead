@@ -29,8 +29,19 @@
                 <a href="index.html#features">Возможности</a>
                 <a href="#contact" class="cta-button nav-cta">Заказать</a>
             </nav>
+            <div class="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
+    <div class="mobile-nav">
+        <a href="index.html#process">Процесс</a>
+        <a href="pricing.html">Тарифы</a>
+        <a href="index.html#features">Возможности</a>
+        <a href="#contact">Контакты</a>
+    </div>
 
     <main>
         <section class="hero">
@@ -99,12 +110,22 @@
             <p class="section-subtitle">Мы уверены в своем продукте, поэтому готовы провести для вас бесплатную тестовую кампанию на 30 контактов. Никаких обязательств. Только результат.</p>
             <div class="contact-details">
                 <p><strong>Свяжитесь с нами, чтобы обсудить детали:</strong></p>
-                <p><strong>Email:</strong> <a href="mailto:s.a.klesov@gmail.com">s.a.klesov@gmail.com</a></p>
-                <p><strong>Телефон / Telegram:</strong> <a href="https://t.me/+375445516200" target="_blank">+375 44 551 62 00</a></p>
+                <p><strong>Email:</strong> <a href="mailto:s.a.klesov@ailead.site">s.a.klesov@ailead.site</a></p>
+                <p><strong>Телефон:</strong> <a href="tel:+375445516200">+375 44 551 62 00</a></p>
+                <p>
+                    <a href="viber://chat?number=%2B375445516200" class="social-link">Viber</a> |
+                    <a href="https://t.me/saklesov" target="_blank" class="social-link">Telegram</a> | 
+                    <a href="https://t.me/ailead_site" target="_blank" class="social-link">Telegram (канал)</a>
+                </p>
             </div>
             <p class="copyright">© 2025 AI LEAD. Все права защищены.</p>
         </div>
     </footer>
-
+    <script>
+        document.querySelector('.hamburger-menu').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.mobile-nav').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

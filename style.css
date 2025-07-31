@@ -20,7 +20,7 @@ body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: smooth; /* Для плавной прокрутки */
+    scroll-behavior: smooth;
 }
 
 .container {
@@ -76,7 +76,7 @@ body {
 .cta-button {
     display: inline-block;
     background-color: var(--accent-color);
-    color: var(--bg-color); /* ЕДИНЫЙ СТИЛЬ: Текст на всех кнопках теперь темный для контраста */
+    color: var(--bg-color);
     padding: 0.75rem 1.5rem;
     border-radius: 8px;
     text-decoration: none;
@@ -117,8 +117,12 @@ body {
 /* Секции */
 .process-section, .features-section, .pricing-section {
     padding: 6rem 0;
+}
+
+.pricing-section {
     border-top: 1px solid var(--border-color);
 }
+
 
 h2 {
     font-size: 2.75rem;
@@ -149,25 +153,6 @@ h2 {
     border: 1px solid var(--border-color);
 }
 
-.step-number {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--accent-color);
-    margin-bottom: 1rem;
-}
-
-.process-step h3 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin: 0 0 1rem 0;
-}
-
-.process-step p {
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin: 0;
-}
-
 /* Стили для тарифов */
 .pricing-grid {
     display: grid;
@@ -183,11 +168,25 @@ h2 {
     border: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
 }
 
 .pricing-card.popular {
     border-color: var(--accent-color);
     transform: scale(1.05);
+}
+
+.popular-badge {
+    position: absolute;
+    top: 15px;
+    right: -30px;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    padding: 5px 30px;
+    transform: rotate(45deg);
+    font-size: 0.8rem;
+    font-weight: 700;
 }
 
 .pricing-card h3 {
@@ -198,8 +197,9 @@ h2 {
 
 .pricing-card-desc {
     color: var(--text-secondary);
-    min-height: 60px;
+    min-height: 80px;
     margin-bottom: 1.5rem;
+    line-height: 1.6;
 }
 
 .price {
@@ -217,12 +217,19 @@ h2 {
 .pricing-card ul {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 2rem 0;
     text-align: left;
+    flex-grow: 1;
 }
 
 .pricing-card ul li {
     margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+.card-cta {
+    margin-top: auto;
+    text-align: center;
 }
 
 .enterprise-plan {
@@ -231,6 +238,12 @@ h2 {
     background-color: var(--bg-light);
     border-radius: 12px;
     text-align: center;
+}
+
+.enterprise-plan p {
+    max-width: 600px;
+    margin: 1rem auto 1.5rem;
+    color: var(--text-secondary);
 }
 
 /* Сетка возможностей */
@@ -246,40 +259,21 @@ h2 {
     border-left: 3px solid var(--accent-color);
 }
 
-.feature-item h3 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    margin: 0 0 1rem 0;
-}
-
-.feature-item p {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
-    margin: 0;
-}
-
 /* Подвал */
 .contact-section {
     padding: 6rem 0;
     background-color: var(--bg-light);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+.contact-section-short {
+    padding: 2rem 0;
     text-align: center;
     border-top: 1px solid var(--border-color);
 }
 
 .contact-details {
     margin-top: 2rem;
-}
-
-.contact-details p {
-    font-size: 1.25rem;
-    line-height: 1.8;
-    margin: 0.5rem 0;
-}
-
-.contact-details a {
-    color: var(--accent-color);
-    font-weight: 500;
-    text-decoration: none;
 }
 
 .copyright {

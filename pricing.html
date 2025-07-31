@@ -29,8 +29,19 @@
                 <a href="index.html#features">Возможности</a>
                 <a href="index.html#contact" class="cta-button nav-cta">Заказать</a>
             </nav>
+            <div class="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
+    <div class="mobile-nav">
+        <a href="index.html#process">Процесс</a>
+        <a href="pricing.html">Тарифы</a>
+        <a href="index.html#features">Возможности</a>
+        <a href="index.html#contact">Контакты</a>
+    </div>
 
     <main>
         <section id="pricing" class="pricing-section">
@@ -75,21 +86,44 @@
                         </ul>
                         <a href="index.html#contact" class="cta-button card-cta">Выбрать</a>
                     </div>
-                </div>
-                <div class="enterprise-plan">
-                    <h4>«Партнерство»</h4>
-                    <p>Для постоянных клиентов, нацеленных на долгосрочное сотрудничество и работу на результат. Условия и KPI (включая оплату за лиды и % от продаж) обсуждаются индивидуально.</p>
-                    <a href="index.html#contact" class="cta-button enterprise-cta">Обсудить условия</a>
+                     <div class="pricing-card">
+                        <h3>«Партнерство»</h3>
+                        <p class="pricing-card-desc">Для постоянных клиентов, нацеленных на долгосрочное сотрудничество и работу на результат.</p>
+                        <div class="price">Индивидуально</div>
+                        <div class="price-setup">+ 40 BYN установочный платеж</div>
+                        <ul>
+                            <li>✓ Ежемесячная работа</li>
+                            <li>✓ Фокус на достижение KPI</li>
+                            <li>✓ Оплата за заявки и % от продаж</li>
+                        </ul>
+                        <a href="index.html#contact" class="cta-button card-cta">Обсудить</a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
     
-    <footer class="contact-section-short">
+    <footer id="contact" class="contact-section">
         <div class="container">
-             <p class="copyright">© 2025 AI LEAD. Все права защищены.</p>
+            <h2>Остались вопросы?</h2>
+            <p class="section-subtitle">Свяжитесь с нами, чтобы получить консультацию или заказать бесплатный тестовый прогон на 30 контактов.</p>
+            <div class="contact-details">
+                <p><strong>Email:</strong> <a href="mailto:s.a.klesov@ailead.site">s.a.klesov@ailead.site</a></p>
+                <p><strong>Телефон:</strong> <a href="tel:+375445516200">+375 44 551 62 00</a></p>
+                <p>
+                    <a href="viber://chat?number=%2B375445516200" class="social-link">Viber</a> |
+                    <a href="https://t.me/saklesov" target="_blank" class="social-link">Telegram</a> | 
+                    <a href="https://t.me/ailead_site" target="_blank" class="social-link">Telegram (канал)</a>
+                </p>
+            </div>
+            <p class="copyright">© 2025 AI LEAD. Все права защищены.</p>
         </div>
     </footer>
-
+    <script>
+        document.querySelector('.hamburger-menu').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.mobile-nav').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

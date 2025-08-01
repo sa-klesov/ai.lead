@@ -173,6 +173,10 @@ h2 {
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.pricing-card:hover {
+    transform: translateY(-5px);
 }
 
 .pricing-card.popular {
@@ -195,6 +199,10 @@ h2 {
 .pricing-card h3 {
     font-size: 1.75rem;
     margin: 0 0 0.5rem 0;
+    color: var(--text-primary);
+}
+
+.pricing-card.popular h3 {
     color: var(--accent-color);
 }
 
@@ -230,25 +238,11 @@ h2 {
     color: var(--text-secondary);
 }
 
-.card-cta, .enterprise-cta {
+.card-cta {
     margin-top: auto;
     text-align: center;
     background-color: var(--accent-color);
     color: var(--bg-color);
-}
-
-.enterprise-plan {
-    margin-top: 4rem;
-    padding: 2rem;
-    background-color: var(--bg-light);
-    border-radius: 12px;
-    text-align: center;
-}
-
-.enterprise-plan p {
-    max-width: 600px;
-    margin: 1rem auto 1.5rem;
-    color: var(--text-secondary);
 }
 
 /* Сетка возможностей */
@@ -266,23 +260,23 @@ h2 {
     border-top: 1px solid var(--border-color);
     text-align: center;
 }
-
 .contact-details {
     margin-top: 2rem;
 }
-
 .contact-details p {
     font-size: 1.25rem;
     line-height: 1.8;
     margin: 0.5rem 0;
 }
-
 .contact-details a {
     color: var(--accent-color);
     font-weight: 500;
     text-decoration: none;
 }
-
+.social-link {
+    display: inline-block;
+    margin: 0 0.5rem;
+}
 .copyright {
     margin-top: 4rem;
     color: var(--text-secondary);
@@ -309,7 +303,7 @@ h2 {
     flex-direction: column;
     background-color: var(--bg-light);
     position: fixed;
-    top: 65px; /* Зависит от высоты шапки */
+    top: 65px;
     left: 0;
     width: 100%;
     padding: 1rem 0;

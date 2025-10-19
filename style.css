@@ -102,10 +102,42 @@ body {
     box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
 }
 
+/* === ПЛАВАЮЩАЯ КНОПКА CTA === */
+.floating-cta {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background-color: var(--highlight-color);
+    color: var(--bg-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeInButton 0.5s 0.5s ease-out backwards;
+}
+
+.floating-cta:hover {
+    background-color: #FBBF24;
+    transform: translateY(-2px);
+}
+
+@keyframes fadeInButton {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
 /* === ГЛАВНЫЙ ЭКРАН === */
 .hero {
     padding: 6rem 0;
     text-align: center;
+}
+
+.hero-content {
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .hero-content h1 {
@@ -155,6 +187,12 @@ h2 {
     padding: 2rem;
     border-radius: 12px;
     border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.process-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .step-number {
@@ -278,4 +316,194 @@ h2 {
 .price {
     font-size: 2.5rem;
     font-weight: 800;
-    margi
+    margin-bottom: 0.25rem;
+}
+
+.price-detail {
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.pricing-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    text-align: left;
+    flex-grow: 1;
+}
+
+.pricing-card ul li {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.pricing-card ul li::before {
+    content: '✓';
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+}
+
+.card-cta {
+    margin-top: auto;
+    text-align: center;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}
+
+.pricing-note {
+    text-align: center;
+    margin-top: 3rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* === FAQ === */
+.faq-section {
+    padding-top: 0;
+    padding-bottom: 6rem;
+    border-top: none;
+}
+
+.faq-item {
+    background-color: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.faq-item h4 {
+    font-size: 1.2rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--text-primary);
+}
+
+.faq-item p {
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* === ПОДВАЛ === */
+.contact-section {
+    padding: 6rem 0;
+    background-color: var(--bg-light);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.contact-details {
+    margin-top: 2rem;
+}
+
+.contact-details p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin: 0.5rem 0;
+}
+
+.contact-details a {
+    color: var(--accent-color);
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.social-link {
+    display: inline-block;
+    margin: 0 0.5rem;
+}
+
+.copyright {
+    margin-top: 4rem;
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+/* === МОБИЛЬНОЕ МЕНЮ === */
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-primary);
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+.mobile-nav {
+    display: none;
+    flex-direction: column;
+    background-color: var(--bg-light);
+    position: fixed;
+    top: 65px; /* Высота шапки */
+    left: 0;
+    width: 100%;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    z-index: 99;
+}
+
+.mobile-nav a {
+    text-align: center;
+    padding: 1rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+.mobile-nav.active {
+    display: flex;
+}
+
+/* === АДАПТИВНОСТЬ === */
+@media (max-width: 820px) {
+    .container {
+        padding: 0 1rem;
+    }
+    .main-nav { 
+        display: none; 
+    }
+    .hamburger-menu { 
+        display: flex; 
+    }
+    .hero-content h1 { 
+        font-size: 2.5rem; 
+    }
+    h2 { 
+        font-size: 2.25rem; 
+    }
+    .pricing-card.popular {
+        transform: scale(1);
+    }
+    .floating-cta {
+        display: none; /* Скрываем плавающую кнопку на мобильных */
+    }
+}```

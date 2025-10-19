@@ -45,11 +45,15 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative; /* Добавлено для позиционирования навигации */
 }
 
 .logo-link {
     text-decoration: none;
     color: var(--text-primary);
+    /* Убедимся, что логотип всегда слева и имеет z-index выше навигации */
+    position: relative;
+    z-index: 2;
 }
 
 .logo {
@@ -58,9 +62,14 @@ body {
 }
 
 .main-nav {
+    /* Изменено для идеального центрирования */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
     gap: 2rem;
+    z-index: 1; /* Помещаем под логотип, если они пересекутся */
 }
 
 .main-nav a {
@@ -435,6 +444,8 @@ h2 {
     cursor: pointer;
     flex-direction: column;
     gap: 5px;
+    position: relative;
+    z-index: 2;
 }
 
 .hamburger-menu span {
@@ -506,4 +517,4 @@ h2 {
     .floating-cta {
         display: none; /* Скрываем плавающую кнопку на мобильных */
     }
-}```
+}

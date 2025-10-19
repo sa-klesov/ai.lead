@@ -1,45 +1,89 @@
-/* ДОБАВИТЬ В КОНЕЦ style.css */
-
-.pricing-note {
-    text-align: center;
-    margin-top: 3rem;
-    color: var(--text-secondary);
-    font-style: italic;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+:root {
+    --bg-color: #0B1120;
+    --bg-light: #1A2035;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --text-primary: #FFFFFF;
+    --text-secondary: #A0AEC0;
+    --accent-color: #38BDF8;
+    --highlight-color: #F59E0B; /* Желтый для акцента */
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-.faq-section {
-    padding-top: 0;
-    padding-bottom: 6rem;
-    border-top: none;
+/* === ОБНУЛЕНИЕ И БАЗОВЫЕ СТИЛИ === */
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
-.faq-item {
-    background-color: var(--bg-light);
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-    border: 1px solid var(--border-color);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
 }
 
-.faq-item h4 {
-    font-size: 1.2rem;
-    margin: 0 0 0.5rem 0;
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* === ШАПКА === */
+.main-header {
+    background-color: rgba(11, 17, 32, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-link {
+    text-decoration: none;
     color: var(--text-primary);
 }
 
-.faq-item p {
-    color: var(--text-secondary);
-    margin: 0;
-    line-height: 1.6;
+.logo {
+    font-size: 1.75rem;
+    font-weight: 800;
 }
 
-/* Измененный CTA в шапке */
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--text-primary);
+}
+
+/* === КНОПКИ === */
+.cta-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
 .nav-cta {
     background-color: var(--highlight-color);
     color: var(--bg-color);
@@ -48,3 +92,190 @@
     background-color: #FBBF24;
     box-shadow: 0 10px 20px rgba(245, 158, 11, 0.2);
 }
+
+.hero-cta {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}
+.hero-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+}
+
+/* === ГЛАВНЫЙ ЭКРАН === */
+.hero {
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 1.5rem 0;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+}
+
+/* === СЕКЦИИ === */
+.process-section, .features-section, .pricing-section, .faq-section {
+    padding: 6rem 0;
+    border-top: 1px solid var(--border-color);
+}
+
+h2 {
+    font-size: 2.75rem;
+    font-weight: 800;
+    text-align: center;
+    margin: 0 0 1rem 0;
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+}
+
+/* === СЕТКА ПРОЦЕССА === */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.process-step {
+    background-color: var(--bg-light);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.step-number {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.process-step h3 {
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.process-step p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.process-step.step-highlight {
+    border-color: var(--highlight-color);
+}
+
+.process-step.step-highlight .step-number {
+    color: var(--highlight-color);
+}
+
+/* === СЕТКА ПРЕИМУЩЕСТВ (ПРОБЛЕМА/РЕШЕНИЕ) === */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.feature-item {
+    background-color: var(--bg-light);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.feature-problem {
+    color: #F87171;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 2px solid #F87171;
+}
+
+.feature-item h3 {
+    font-size: 1.5rem;
+    margin: 0 0 1rem 0;
+}
+
+.feature-item p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* === ТАРИФЫ === */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.pricing-card {
+    background-color: var(--bg-light);
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+}
+
+.pricing-card.popular {
+    border-color: var(--accent-color);
+    transform: scale(1.05);
+}
+
+.popular-badge {
+    position: absolute;
+    top: 15px;
+    right: -30px;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    padding: 5px 30px;
+    transform: rotate(45deg);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.pricing-card h3 {
+    font-size: 1.75rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--text-primary);
+}
+
+.pricing-card.popular h3 {
+    color: var(--accent-color);
+}
+
+.pricing-card-desc {
+    color: var(--text-secondary);
+    min-height: 80px;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margi

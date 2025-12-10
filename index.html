@@ -13,14 +13,76 @@
     <title>AI LEAD — Система интеллектуального поиска B2B-клиентов</title>
     <meta name="description" content="AI LEAD: Находим B2B-клиентов, отсеиваем конкурентов и назначаем встречи с помощью ИИ.">
     
-    <link rel="stylesheet" href="style (2).css">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* Стиль для второй кнопки (прозрачной), чтобы вписалась в дизайн */
+        /* === ВЕСЬ ВАШ ДИЗАЙН (STYLE.CSS) ВСТРОЕН СЮДА === */
+        :root {
+            --bg-color: #0B1120;
+            --bg-light: #1A2035;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0AEC0;
+            --accent-color: #38BDF8;
+            --highlight-color: #F59E0B;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        /* ШАПКА */
+        .main-header {
+            background-color: rgba(11, 17, 32, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .main-header .container {
+            display: flex; justify-content: space-between; align-items: center; position: relative;
+        }
+        .logo-link {
+            text-decoration: none; color: var(--text-primary); position: relative; z-index: 2;
+        }
+        .logo { font-size: 1.75rem; font-weight: 800; }
+        
+        .main-nav {
+            position: absolute; left: 50%; transform: translateX(-50%);
+            display: flex; align-items: center; gap: 2rem; z-index: 1;
+        }
+        .main-nav a {
+            text-decoration: none; color: var(--text-secondary); font-weight: 500; transition: color 0.3s ease;
+        }
+        .main-nav a:hover { color: var(--text-primary); }
+
+        /* КНОПКИ */
+        .cta-button {
+            display: inline-block; padding: 0.75rem 1.5rem; border-radius: 8px;
+            text-decoration: none; font-weight: 700;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+        .hero-cta {
+            background-color: var(--accent-color); color: var(--bg-color);
+        }
+        .hero-cta:hover {
+            transform: translateY(-2px); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2);
+        }
+        
+        /* СТИЛЬ ДЛЯ ВТОРОЙ КНОПКИ (ПРОЗРАЧНОЙ) */
         .cta-outline {
             background-color: transparent;
             border: 2px solid var(--accent-color);
@@ -33,45 +95,99 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(56, 189, 248, 0.2);
         }
-        
-        /* Адаптация кнопок для мобильных */
-        @media (max-width: 768px) {
-            .hero-buttons {
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-                align-items: center;
-            }
-            .cta-outline {
-                margin-left: 0;
-            }
-        }
 
-        /* Дополнительный стиль для списков внутри карточек, 
-           чтобы подробно описать модули */
-        .module-list {
-            list-style: none;
-            padding: 0;
-            margin-top: 1rem;
-            text-align: left;
+        /* ПЛАВАЮЩАЯ КНОПКА */
+        .floating-cta {
+            position: fixed; top: 20px; right: 20px; z-index: 1000;
+            background-color: var(--highlight-color); color: var(--bg-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeInButton 0.5s 0.5s ease-out backwards;
         }
+        .floating-cta:hover { background-color: #FBBF24; transform: translateY(-2px); }
+        @keyframes fadeInButton { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* HERO */
+        .hero { padding: 6rem 0; text-align: center; }
+        .hero-content { animation: fadeIn 1s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .hero-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin: 0 0 1.5rem 0; }
+        .hero-content p { font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2.5rem; }
+
+        /* СЕКЦИИ */
+        .process-section, .features-section, .contact-section { padding: 6rem 0; border-top: 1px solid var(--border-color); }
+        h2 { font-size: 2.75rem; font-weight: 800; text-align: center; margin: 0 0 1rem 0; }
+        .section-subtitle { font-size: 1.25rem; color: var(--text-secondary); text-align: center; max-width: 800px; margin: 0 auto 4rem; }
+
+        /* СЕТКИ */
+        .process-grid, .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        
+        /* КАРТОЧКИ ПРОЦЕССА */
+        .process-step {
+            background-color: var(--bg-light); padding: 2rem; border-radius: 12px;
+            border: 1px solid var(--border-color); transition: transform 0.3s ease;
+        }
+        .process-step:hover { transform: translateY(-5px); }
+        .step-number { font-size: 1.5rem; font-weight: 800; color: var(--accent-color); margin-bottom: 1rem; }
+        .process-step h3 { font-size: 1.25rem; margin: 0 0 0.5rem 0; }
+        .process-step p { color: var(--text-secondary); line-height: 1.6; margin: 0; }
+
+        /* КАРТОЧКИ ПРЕИМУЩЕСТВ (МОДУЛИ) */
+        .feature-item {
+            background-color: var(--bg-light); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color);
+        }
+        .feature-problem {
+            color: var(--accent-color); font-weight: 700; margin-bottom: 1.5rem; padding-left: 1rem;
+            border-left: 3px solid var(--accent-color); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;
+        }
+        .feature-item h3 { font-size: 1.5rem; margin: 0 0 1rem 0; }
+        .feature-item p { color: var(--text-secondary); line-height: 1.6; margin: 0; }
+
+        /* СПИСКИ ВНУТРИ КАРТОЧЕК */
+        .module-list { list-style: none; padding: 0; margin-top: 1rem; text-align: left; }
         .module-list li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.8rem;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
+            position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;
+            color: var(--text-secondary); font-size: 0.95rem;
         }
         .module-list li::before {
-            content: "✓";
-            color: var(--accent-color);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
+            content: "✓"; color: var(--accent-color); position: absolute; left: 0; font-weight: bold;
+        }
+
+        /* ПОДВАЛ */
+        .contact-section { background-color: var(--bg-light); text-align: center; }
+        .contact-details p { font-size: 1.25rem; line-height: 1.8; margin: 0.5rem 0; }
+        .contact-details a { color: var(--accent-color); font-weight: 500; text-decoration: none; }
+        .social-link { display: inline-block; margin: 0 0.5rem; }
+        .copyright { margin-top: 4rem; color: var(--text-secondary); opacity: 0.5; }
+
+        /* МОБИЛЬНОЕ МЕНЮ */
+        .hamburger-menu { display: none; cursor: pointer; flex-direction: column; gap: 5px; position: relative; z-index: 2; }
+        .hamburger-menu span { display: block; width: 25px; height: 3px; background-color: var(--text-primary); border-radius: 3px; transition: 0.3s; }
+        .mobile-nav {
+            display: none; flex-direction: column; background-color: var(--bg-light);
+            position: fixed; top: 65px; left: 0; width: 100%; padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color); z-index: 99;
+        }
+        .mobile-nav a { text-align: center; padding: 1rem; text-decoration: none; color: var(--text-secondary); font-weight: 500; }
+        .hamburger-menu.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger-menu.active span:nth-child(2) { opacity: 0; }
+        .hamburger-menu.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+        .mobile-nav.active { display: flex; }
+
+        /* АДАПТИВНОСТЬ */
+        @media (max-width: 820px) {
+            .container { padding: 0 1rem; }
+            .main-nav { display: none; }
+            .hamburger-menu { display: flex; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-buttons { display: flex; flex-direction: column; gap: 15px; align-items: center; }
+            .cta-outline { margin-left: 0; width: 100%; text-align: center; box-sizing: border-box; }
+            .hero-cta { width: 100%; text-align: center; box-sizing: border-box; }
+            .floating-cta { display: none; }
         }
     </style>
 </head>
 <body>
+
     <header class="main-header">
         <div class="container">
             <a href="index.html" class="logo-link"><div class="logo">AI LEAD</div></a>
@@ -83,7 +199,7 @@
             <div class="hamburger-menu"><span></span><span></span><span></span></div>
         </div>
     </header>
-    
+
     <div class="mobile-nav">
         <a href="#process">Как это работает</a>
         <a href="pricing.html">Цены для первых партнеров</a>
@@ -97,7 +213,6 @@
                 <div class="hero-content">
                     <h1>Хватит писать письма, которые удаляют.</h1>
                     <p>Мы заменили ручной труд менеджеров на два AI-модуля. Находим прямые контакты директоров, отсеиваем конкурентов и начинаем диалоги, которые приводят к сделкам.</p>
-                    
                     <div class="hero-buttons">
                         <a href="pricing.html" class="cta-button hero-cta">Выбрать Тариф</a>
                         <a href="#features" class="cta-button cta-outline">Изучить технологию</a>
@@ -114,12 +229,12 @@
                     <div class="process-step">
                         <div class="step-number">01</div>
                         <h3>Анализ (ICP)</h3>
-                        <p>Мы не ищем "всех подряд". Система изучает ваш бизнес и создает портрет идеального клиента. Это исключает попадание в базу нецелевых лидов.</p>
+                        <p>Мы не ищем "всех подряд". Система изучает ваш бизнес и создает портрет идеального клиента. Это исключает нецелевые лиды.</p>
                     </div>
                     <div class="process-step">
                         <div class="step-number">02</div>
                         <h3>AI Разведка</h3>
-                        <p>Модуль Search сканирует рынок. Он находит не просто info@, а <strong>прямые контакты</strong> ЛПР (директоров) и фильтрует конкурентов ("свой-чужой").</p>
+                        <p>Модуль Search сканирует рынок. Он находит <strong>прямые контакты</strong> ЛПР (директоров) и фильтрует конкурентов ("свой-чужой").</p>
                     </div>
                     <div class="process-step">
                         <div class="step-number">03</div>
@@ -139,10 +254,9 @@
             <div class="container">
                  <h2>Наша Технология (Экосистема)</h2>
                  <p class="section-subtitle">Два мощных модуля, которые работают 24/7 вместо целого отдела лидогенерации.</p>
-                 
                  <div class="features-grid">
                      <div class="feature-item">
-                         <div class="feature-problem" style="color: #8b5cf6; border-color: #8b5cf6;">Модуль 01: Разведка</div>
+                         <div class="feature-problem" style="border-color: #8b5cf6; color: #8b5cf6;">Модуль 01: Разведка</div>
                          <h3>AI LEAD Search</h3>
                          <p>Ваш цифровой скаут. Это не просто парсер, это аналитическая система.</p>
                          <ul class="module-list">
@@ -151,18 +265,16 @@
                              <li>Формирование "Вечного актива": база остается у вас навсегда.</li>
                          </ul>
                      </div>
-
                      <div class="feature-item">
-                         <div class="feature-problem" style="color: #22c55e; border-color: #22c55e;">Модуль 02: Аутрич</div>
+                         <div class="feature-problem" style="border-color: #22c55e; color: #22c55e;">Модуль 02: Аутрич</div>
                          <h3>AI LEAD Mail</h3>
                          <p>Машина диалогов. Превращает "холодную" базу в теплые встречи.</p>
                          <ul class="module-list">
-                             <li>Гипер-персонализация: AI находит повод (инфоповод) на сайте клиента.</li>
+                             <li>Гипер-персонализация: AI находит повод на сайте клиента.</li>
                              <li>Технология Safe-Send: имитация человека для обхода спам-фильтров.</li>
                              <li>Письма без шаблонов "Купите у нас" — только ценность.</li>
                          </ul>
                      </div>
-                     
                      <div class="feature-item">
                          <div class="feature-problem">Почему это работает лучше?</div>
                          <h3>Сравнение подходов</h3>
@@ -192,7 +304,7 @@
         </div>
     </footer>
 
-    <a href="pricing.html" class="floating-cta cta-button">Выбрать Тариф</a>
+    <a href="pricing.html" class="floating-cta cta-button">Заказать Кампанию</a>
 
     <script>
         document.querySelector('.hamburger-menu').addEventListener('click', function() {

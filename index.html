@@ -20,109 +20,217 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* Сетка продуктов */
-        .product-row {
+        /* Адаптация под переменные из style.css */
+        :root {
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Общие стили секций */
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Сетка продуктов (Модули) */
+        .tech-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin-bottom: 6rem;
+            gap: 2rem;
         }
-        .product-row.reverse { direction: rtl; } 
-        .product-row.reverse .product-text { direction: ltr; }
-        
-        .product-label {
+
+        .tech-card {
+            background-color: var(--bg-light); /* Используем цвет из style.css */
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .tech-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .tech-subtitle {
             text-transform: uppercase;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
             letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .tech-card h3 {
+            font-size: 1.8rem;
             margin-bottom: 1rem;
-            display: inline-block;
+            color: var(--text-primary);
         }
-        .label-search { color: #8b5cf6; } /* Фиолетовый */
-        .label-mail { color: #22c55e; } /* Зеленый */
 
-        .product-text h2 { font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.2; color: #fff; }
-        .product-text p { color: #A0AEC0; margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.6; }
-        
-        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
-        .feature-item h4 { margin: 0 0 0.5rem 0; color: #fff; font-size: 1.1rem; }
-        .feature-item p { font-size: 0.95rem; margin: 0; color: #A0AEC0; }
+        .tech-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
 
-        /* Шаги процесса */
-        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin: 4rem 0; }
-        .step-card { 
-            background: rgba(255, 255, 255, 0.03); 
-            padding: 2rem; 
-            border-radius: 12px; 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            position: relative; 
+        .feature-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-primary);
+            font-size: 0.95rem;
         }
-        .step-num { 
-            position: absolute; top: -15px; left: 20px; 
-            background: var(--accent-color); color: #000; 
-            width: 30px; height: 30px; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; font-weight: bold;
-        }
-        .step-card h3 { margin-top: 1rem; color: #fff; font-size: 1.2rem; }
-        .step-card p { font-size: 0.9rem; color: #A0AEC0; margin-top: 0.5rem; }
 
-        /* Сравнение писем */
-        .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
-        .email-box { padding: 2rem; border-radius: 8px; font-family: monospace; font-size: 0.9rem; line-height: 1.5; }
-        .bad { background: rgba(239, 68, 68, 0.1); border-left: 3px solid #ef4444; color: #fca5a5; }
-        .good { background: rgba(34, 197, 94, 0.1); border-left: 3px solid #22c55e; color: #86efac; }
+        .feature-list li::before {
+            content: "✓";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
 
-        /* Тарифы (адаптация под ваш стиль) */
-        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-        .price-card { 
-            background: rgba(255, 255, 255, 0.03); 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            border-radius: 12px; 
-            padding: 2.5rem 2rem; 
-            display: flex; 
-            flex-direction: column; 
+        /* Процесс (Шаги) */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
         }
-        .featured { 
-            border-color: var(--accent-color); 
-            background: rgba(56, 189, 248, 0.05); 
-            transform: scale(1.05); 
+
+        .step-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 12px;
+            position: relative;
         }
-        .price { font-size: 2.5rem; font-weight: 800; margin: 1rem 0; color: #fff; }
-        .check-list li { margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; color: #d4d4d4; }
-        .check-list li::before { content: "✓"; color: var(--accent-color); position: absolute; left: 0; font-weight: bold; }
-        
-        .cta-button {
-            display: inline-block;
+
+        .step-num {
+            position: absolute;
+            top: -15px;
+            left: 20px;
             background-color: var(--accent-color);
             color: #0B1120;
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            text-align: center;
-            transition: all 0.3s ease;
-            margin-top: auto;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
         }
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+
+        .step-card h3 {
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
         }
-        .cta-button.outline {
-            background: transparent;
-            border: 1px solid var(--accent-color);
-            color: var(--accent-color);
+
+        /* Сравнение (Спам vs Мы) */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
         }
-        .cta-button.outline:hover {
-            background: rgba(56, 189, 248, 0.1);
+
+        .comp-card {
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .comp-bad {
+            background: rgba(239, 68, 68, 0.05);
+            border-color: rgba(239, 68, 68, 0.2);
+        }
+
+        .comp-good {
+            background: rgba(34, 197, 94, 0.05);
+            border-color: rgba(34, 197, 94, 0.2);
+        }
+
+        .comp-title {
+            font-weight: 800;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Тарифы */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .price-card {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-card.featured {
+            border-color: var(--accent-color);
+            background: rgba(56, 189, 248, 0.03);
+            transform: scale(1.05);
+            z-index: 2;
+        }
+
+        .price-tag {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 1rem 0;
+        }
+
+        .price-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
         }
 
         /* Мобильная адаптация */
         @media (max-width: 900px) {
-            .product-row, .steps, .comparison, .pricing-grid { grid-template-columns: 1fr; }
-            .product-row.reverse { direction: ltr; }
-            .featured { transform: none; }
-            .hero h1 { font-size: 2.5rem; }
+            .tech-grid, .steps-grid, .comparison-grid, .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            .price-card.featured {
+                transform: none;
+            }
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+            }
         }
     </style>
 </head>
@@ -130,125 +238,88 @@
 
     <header class="main-header">
         <div class="container">
-            <a href="index.html" class="logo-link"><div class="logo">AI LEAD</div></a>
-            <nav class="desktop-nav">
-                <a href="#products">Технология</a>
-                <a href="#process">Как это работает</a>
-                <a href="#pricing">Тарифы</a>
-                <a href="#contact">Контакты</a>
-            </nav>
-            <div class="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <a href="index.html" class="logo-link"><div class="logo">AI LEAD</div></a>
+                
+                <nav class="desktop-nav">
+                    <a href="#technology">Технология</a>
+                    <a href="#process">Процесс</a>
+                    <a href="#pricing">Тарифы</a>
+                </nav>
+
+                <div class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
         <div class="mobile-nav">
-            <a href="#products">Технология</a>
-            <a href="#process">Как это работает</a>
+            <a href="#technology">Технология</a>
+            <a href="#process">Процесс</a>
             <a href="#pricing">Тарифы</a>
-            <a href="#contact">Контакты</a>
         </div>
     </header>
 
     <main>
-        <section class="hero-section">
+        <section class="hero-section" style="padding: 6rem 0; text-align: center;">
             <div class="container">
-                <h1>Хватит писать письма,<br><span style="color: var(--accent-color);">которые удаляют.</span></h1>
-                <p class="hero-subtitle">
+                <h1 style="font-size: 3rem; line-height: 1.1; margin-bottom: 1.5rem;">
+                    Хватит писать письма,<br>
+                    <span style="color: var(--accent-color);">которые удаляют.</span>
+                </h1>
+                <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 2.5rem; line-height: 1.6;">
                     Мы заменили ручной труд менеджеров на два AI-модуля.
                     Находим прямые контакты директоров, отсеиваем конкурентов и начинаем диалоги, которые приводят к сделкам.
                 </p>
-                <div class="hero-buttons">
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <a href="#pricing" class="cta-button">Выбрать Тариф</a>
-                    <a href="#products" class="cta-button outline" style="margin-left: 1rem;">Изучить технологию</a>
+                    <a href="#technology" class="cta-button" style="background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color);">Изучить технологию</a>
                 </div>
             </div>
         </section>
 
-        <section id="products" class="container" style="padding: 6rem 2rem;">
-            <h2 style="text-align: center; margin-bottom: 4rem;">Экосистема AI LEAD</h2>
-
-            <div class="product-row">
-                <div class="product-text">
-                    <span class="product-label label-search">Модуль 01 • Разведка</span>
-                    <h2>AI LEAD Search</h2>
-                    <p>
-                        Это ваш цифровой скаут. Он не просто "парсит" интернет, он думает как маркетолог.
-                        Система анализирует ваш бизнес, строит стратегию поиска и находит именно тех, у кого есть деньги и потребность.
-                    </p>
-                    <div class="feature-grid">
-                        <div class="feature-item">
-                            <h4>🔍 Поиск ЛПР</h4>
-                            <p>Находит имена и прямые мобильные номера Директоров и РОПов, а не секретарей.</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4>🛡 Фильтр "Свой-Чужой"</h4>
-                            <p>Автоматически отсекает конкурентов, поставщиков и нецелевые компании.</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4>📊 Стратегия</h4>
-                            <p>Вы получаете аналитику рынка с сегментацией по отраслям.</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4>💎 Вечный актив</h4>
-                            <p>База остается у вас навсегда. Это фундамент продаж на месяцы.</p>
-                        </div>
-                    </div>
-                </div>
-                <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
-                    <div style="font-family: monospace; color: #8b5cf6; margin-bottom: 1rem;">// STATUS: TARGET ACQUIRED</div>
-                    <div style="color: #fff; margin-bottom: 0.5rem;">Компания: ОАО "ПромТехСтрой"</div>
-                    <div style="color: #fff; margin-bottom: 0.5rem;">ЛПР: Иванов А.В. (Ген. директор)</div>
-                    <div style="color: #22c55e; margin-bottom: 0.5rem;">Телефон: +375 29 6XX-XX-XX (Личный)</div>
-                    <div style="color: #A0AEC0; font-size: 0.9rem;">>> Анализ: Высокий потенциал. Найден проект по модернизации склада.</div>
-                </div>
-            </div>
-
-            <div class="product-row reverse">
-                <div class="product-text">
-                    <span class="product-label label-mail">Модуль 02 • Аутрич</span>
-                    <h2>AI LEAD Mail</h2>
-                    <p>
-                        Машина диалогов. Мы превращаем "холодную" базу в теплые встречи.
-                        Система имитирует поведение человека, чтобы письма попадали во "Входящие" и вызывали интерес, а не раздражение.
-                    </p>
-                    <div class="feature-grid">
-                        <div class="feature-item">
-                            <h4>🧠 Гипер-персонализация</h4>
-                            <p>AI читает новости на сайте клиента и находит реальный повод для знакомства.</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4>🔒 Технология Safe-Send</h4>
-                            <p>Умные паузы и прогрев домена гарантируют доставляемость >95%.</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4>✍️ Копирайтинг</h4>
-                            <p>Письма пишутся языком выгод, без шаблонов "купите у нас".</p>
-                        </div>
-                        <div class="feature-item">
-                            <h4>🚀 Результат</h4>
-                            <p>Вы получаете ответы "Интересно, давайте обсудим" прямо на почту.</p>
-                        </div>
-                    </div>
-                </div>
-                <div style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
-                    <div style="font-family: monospace; color: #22c55e; margin-bottom: 1rem;">// STATUS: MESSAGE SENT</div>
-                    <div style="color: #fff; font-size: 0.9rem; line-height: 1.5;">
-                        "Сергей, добрый день!<br><br>
-                        Увидел вашу новость про открытие филиала в Бресте. Масштаб впечатляет.<br>
-                        Обычно при таком расширении возникает вопрос логистики...<br><br>
-                        <span style="background: rgba(34, 197, 94, 0.2); color: #86efac; padding: 2px 5px;">>> Открыто: 10:42</span><br>
-                        <span style="background: rgba(34, 197, 94, 0.2); color: #86efac; padding: 2px 5px;">>> Ответ получен: 11:15</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="process" style="background: rgba(0,0,0,0.2); padding: 4rem 0;">
+        <section id="technology">
             <div class="container">
-                <h2 style="text-align: center;">Как мы работаем</h2>
-                <div class="steps">
+                <div class="section-header">
+                    <h2>Экосистема AI LEAD</h2>
+                    <p>Один менеджер делает это месяц. Наша система — 24 часа.</p>
+                </div>
+
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <span class="tech-icon">📡</span>
+                        <span class="tech-subtitle" style="color: #8b5cf6;">Модуль Разведки</span>
+                        <h3>AI LEAD Search</h3>
+                        <p>Ваш цифровой скаут. Анализирует бизнес, строит стратегию поиска и находит именно тех, у кого есть деньги и потребность.</p>
+                        <ul class="feature-list">
+                            <li><strong>Поиск ЛПР:</strong> Находит прямые мобильные Директоров.</li>
+                            <li><strong>Фильтр "Свой-Чужой":</strong> Отсекает конкурентов.</li>
+                            <li><strong>Вечный актив:</strong> База остается у вас навсегда.</li>
+                        </ul>
+                    </div>
+
+                    <div class="tech-card">
+                        <span class="tech-icon">📨</span>
+                        <span class="tech-subtitle" style="color: #22c55e;">Модуль Аутрича</span>
+                        <h3>AI LEAD Mail</h3>
+                        <p>Машина диалогов. Превращает "холодную" базу в теплые встречи, имитируя поведение человека при переписке.</p>
+                        <ul class="feature-list">
+                            <li><strong>Гипер-персонализация:</strong> Находит повод для диалога на сайте.</li>
+                            <li><strong>Safe-Send:</strong> Гарантирует попадание в "Входящие".</li>
+                            <li><strong>Результат:</strong> Ответы "Интересно, давайте обсудим".</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process" style="background-color: rgba(255,255,255,0.02);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Как мы работаем</h2>
+                </div>
+                <div class="steps-grid">
                     <div class="step-card">
                         <div class="step-num">1</div>
                         <h3>Анализ</h3>
@@ -257,12 +328,12 @@
                     <div class="step-card">
                         <div class="step-num">2</div>
                         <h3>Разведка</h3>
-                        <p>Запускаем <b>AI Search</b>. Собираем базу, находим ЛПР и телефоны.</p>
+                        <p>Запускаем AI Search. Собираем базу, находим ЛПР и телефоны.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-num">3</div>
                         <h3>Аутрич</h3>
-                        <p>Запускаем <b>AI Mail</b>. Пишем персональные письма и начинаем диалог.</p>
+                        <p>Запускаем AI Mail. Пишем персональные письма и начинаем диалог.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-num">4</div>
@@ -273,87 +344,98 @@
             </div>
         </section>
 
-        <section class="container" style="padding: 6rem 2rem;">
-            <h2 style="text-align: center;">Почему нам отвечают?</h2>
-            <p style="text-align: center; color: var(--text-secondary);">Разница между спамом и качественным B2B-маркетингом.</p>
-            
-            <div class="comparison">
-                <div class="email-box bad">
-                    <div style="font-weight: bold; margin-bottom: 10px; color: #ef4444;">❌ СПАМ (Как у всех)</div>
-                    "Здравствуйте! Мы компания Вектор. Предлагаем вам купить наши услуги. У нас низкие цены и высокое качество. Прайс во вложении..."
-                    <div style="margin-top: 15px; font-size: 0.8rem; opacity: 0.7;">РЕЗУЛЬТАТ: Удалено без прочтения</div>
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Почему нам отвечают?</h2>
+                    <p>Разница между "Спамом" и "Разведкой" — в подходе.</p>
                 </div>
-                <div class="email-box good">
-                    <div style="font-weight: bold; margin-bottom: 10px; color: #22c55e;">✅ AI LEAD (Наш подход)</div>
-                    "Иван, добрый день! Видел вашу новость про контракт с «АМКОДОР». Это показывает ваш уровень компетенции. У нас есть решение..."
-                    <div style="margin-top: 15px; font-size: 0.8rem; opacity: 0.7;">РЕЗУЛЬТАТ: Ответ "Интересно, давайте созвонимся."</div>
+                <div class="comparison-grid">
+                    <div class="comp-card comp-bad">
+                        <div class="comp-title" style="color: #ef4444;">❌ Обычная рассылка</div>
+                        <p style="color: var(--text-secondary);">
+                            Шаблонный текст "Купите у нас". Отправляется тысячам адресов одновременно.
+                            Результат: Попадание в спам, негатив, удаление без прочтения.
+                        </p>
+                    </div>
+                    <div class="comp-card comp-good">
+                        <div class="comp-title" style="color: #22c55e;">✅ Подход AI LEAD</div>
+                        <p style="color: var(--text-secondary);">
+                            Письмо начинается с новости клиента ("Видел ваше открытие в Бресте...").
+                            Отправляется штучно. Результат: Доверие, интерес, начало диалога.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="pricing" class="container" style="padding: 4rem 2rem;">
-            <h2 style="text-align: center;">Тарифы</h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">Инвестиция в результат, а не в процесс.</p>
-
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <h3>Тест-Драйв</h3>
-                    <div class="price">300 BYN</div>
-                    <p style="font-size: 0.9rem; color: #A0AEC0;">Попробовать качество на вкус</p>
-                    <ul class="check-list" style="list-style: none; padding: 0; margin-top: 1.5rem; flex-grow: 1;">
-                        <li>50-70 отборных лидов</li>
-                        <li>Проверка телефонов и ЛПР</li>
-                        <li>Формат: Excel</li>
-                        <li>Срок: 24 часа</li>
-                    </ul>
-                    <a href="https://t.me/saklesov" class="cta-button outline" target="_blank">Попробовать</a>
+        <section id="pricing">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Тарифы</h2>
+                    <p>Инвестиция в результат, а не в процесс.</p>
                 </div>
 
-                <div class="price-card featured">
-                    <div style="color: var(--accent-color); font-size: 0.8rem; font-weight: bold; text-transform: uppercase; margin-bottom: 0.5rem;">Выбор бизнеса</div>
-                    <h3>База под ключ</h3>
-                    <div class="price" style="color: var(--accent-color);">990 BYN</div>
-                    <p style="font-size: 0.9rem; color: #A0AEC0;">Готовый актив для отдела продаж</p>
-                    <ul class="check-list" style="list-style: none; padding: 0; margin-top: 1.5rem; flex-grow: 1;">
-                        <li><strong>500+</strong> целевых компаний</li>
-                        <li>Контакты Директоров / РОПов</li>
-                        <li><strong>Стратегия поиска (ICP)</strong></li>
-                        <li>Полная очистка от мусора</li>
-                        <li>Разбивка по отраслям</li>
-                    </ul>
-                    <a href="https://t.me/saklesov" class="cta-button" target="_blank">Заказать Актив</a>
-                </div>
+                <div class="pricing-grid">
+                    <div class="price-card">
+                        <h3>Тест-Драйв</h3>
+                        <div class="price-tag">300 BYN</div>
+                        <p class="price-desc">Попробовать качество на вкус</p>
+                        <ul class="feature-list" style="flex-grow: 1;">
+                            <li>50-70 отборных лидов</li>
+                            <li>Проверка телефонов и ЛПР</li>
+                            <li>Формат: Excel</li>
+                            <li>Срок: 24 часа</li>
+                        </ul>
+                        <a href="https://t.me/saklesov" class="cta-button" style="background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); margin-top: 2rem;">Попробовать</a>
+                    </div>
 
-                <div class="price-card">
-                    <h3>Аутрич под ключ</h3>
-                    <div class="price">2400 BYN</div>
-                    <p style="font-size: 0.9rem; color: #A0AEC0;">Мы ищем и пишем за вас</p>
-                    <ul class="check-list" style="list-style: none; padding: 0; margin-top: 1.5rem; flex-grow: 1;">
-                        <li>Всё из тарифа "База"</li>
-                        <li>Написание цепочки писем (Genimi)</li>
-                        <li>Запуск AI-рассылки</li>
-                        <li>Техническая настройка домена</li>
-                        <li>Передача теплых ответов</li>
-                    </ul>
-                    <a href="https://t.me/saklesov" class="cta-button outline" target="_blank">Обсудить</a>
+                    <div class="price-card featured">
+                        <div style="color: var(--accent-color); font-size: 0.8rem; font-weight: bold; text-transform: uppercase; margin-bottom: 0.5rem;">Выбор бизнеса</div>
+                        <h3>База под ключ</h3>
+                        <div class="price-tag" style="color: var(--accent-color);">990 BYN</div>
+                        <p class="price-desc">Готовый актив для отдела продаж</p>
+                        <ul class="feature-list" style="flex-grow: 1;">
+                            <li><strong>500+</strong> целевых компаний</li>
+                            <li>Контакты Директоров / РОПов</li>
+                            <li><strong>Стратегия поиска (ICP)</strong></li>
+                            <li>Полная очистка от мусора</li>
+                            <li>Разбивка по отраслям</li>
+                        </ul>
+                        <a href="https://t.me/saklesov" class="cta-button" style="margin-top: 2rem;">Заказать Актив</a>
+                    </div>
+
+                    <div class="price-card">
+                        <h3>Аутрич под ключ</h3>
+                        <div class="price-tag">2400 BYN</div>
+                        <p class="price-desc">Мы ищем и пишем за вас</p>
+                        <ul class="feature-list" style="flex-grow: 1;">
+                            <li>Всё из тарифа "База"</li>
+                            <li>Написание цепочки писем</li>
+                            <li>Запуск AI-рассылки</li>
+                            <li>Техническая настройка домена</li>
+                            <li>Передача теплых ответов</li>
+                        </ul>
+                        <a href="https://t.me/saklesov" class="cta-button" style="background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color); margin-top: 2rem;">Обсудить</a>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer id="contact" class="contact-section" style="padding: 4rem 0; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 4rem;">
+    <footer id="contact" class="contact-section" style="padding: 4rem 0; border-top: 1px solid var(--border-color); margin-top: 4rem;">
         <div class="container" style="text-align: center;">
-            <h2>Готовы начать?</h2>
-            <p class="section-subtitle" style="margin-bottom: 2rem;">Свяжитесь с нами, чтобы забронировать место.</p>
+            <h2 style="margin-bottom: 1rem;">Готовы начать?</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Свяжитесь с нами, чтобы забронировать место.</p>
             <div class="contact-details" style="margin-bottom: 2rem;">
-                <p><strong>Email:</strong> <a href="mailto:s.a.klesov@ailead.site" style="color: var(--accent-color);">s.a.klesov@ailead.site</a></p>
-                <p><strong>Телефон:</strong> <a href="tel:+375445516200" style="color: var(--accent-color);">+375 44 551 62 00</a></p>
-                <p>
-                    <a href="viber://chat?number=%2B375445516200" style="color: #fff; margin: 0 10px;">Viber</a> |
-                    <a href="https://t.me/saklesov" target="_blank" style="color: #fff; margin: 0 10px;">Telegram</a>
+                <p><strong>Email:</strong> <a href="mailto:s.a.klesov@ailead.site" style="color: var(--accent-color); text-decoration: none;">s.a.klesov@ailead.site</a></p>
+                <p><strong>Телефон:</strong> <a href="tel:+375445516200" style="color: var(--accent-color); text-decoration: none;">+375 44 551 62 00</a></p>
+                <p style="margin-top: 1rem;">
+                    <a href="viber://chat?number=%2B375445516200" style="color: #fff; margin: 0 10px; text-decoration: none;">Viber</a> |
+                    <a href="https://t.me/saklesov" target="_blank" style="color: #fff; margin: 0 10px; text-decoration: none;">Telegram</a>
                 </p>
             </div>
-            <p class="copyright" style="font-size: 0.8rem; opacity: 0.5;">© 2025 AI LEAD. Все права защищены.</p>
+            <p style="font-size: 0.8rem; opacity: 0.5;">© 2025 AI LEAD. Все права защищены.</p>
         </div>
     </footer>
 

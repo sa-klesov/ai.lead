@@ -10,303 +10,167 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI LEAD — Находим B2B-клиентов и назначаем встречи</title>
-    <meta name="description" content="AI LEAD: Находим B2B-клиентов в Беларуси с помощью ИИ. Формируем эксклюзивные базы, отсеиваем конкурентов и запускаем персонализированные рассылки.">
+    <title>AI LEAD — Система интеллектуального поиска B2B-клиентов</title>
+    <meta name="description" content="AI LEAD: Находим B2B-клиентов, отсеиваем конкурентов и назначаем встречи с помощью ИИ.">
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style (2).css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* Адаптация под переменные вашего style.css */
-        :root {
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(255, 255, 255, 0.1);
+        /* Стиль для второй кнопки (прозрачной), чтобы вписалась в дизайн */
+        .cta-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            margin-left: 15px;
         }
-
-        /* Общие отступы как на старом сайте */
-        section { padding: 4rem 0; }
+        .cta-outline:hover {
+            background-color: rgba(56, 189, 248, 0.1);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(56, 189, 248, 0.2);
+        }
         
-        /* Заголовки секций */
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+        /* Адаптация кнопок для мобильных */
+        @media (max-width: 768px) {
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            .cta-outline {
+                margin-left: 0;
+            }
         }
 
-        /* --- НОВЫЙ БЛОК: ЭКОСИСТЕМА --- */
-        .tech-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
+        /* Дополнительный стиль для списков внутри карточек, 
+           чтобы подробно описать модули */
+        .module-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+            text-align: left;
         }
-        .tech-card {
-            background-color: var(--bg-light); /* Ваш цвет фона карточек */
-            border: 1px solid var(--border-color);
-            padding: 2.5rem;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
-        }
-        .tech-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-color);
-        }
-        .tech-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
-        .tech-label {
-            text-transform: uppercase; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 0.5rem; display: block;
-        }
-        .tech-card h3 { font-size: 1.8rem; margin-bottom: 1rem; color: #fff; }
-        .tech-card p { color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6; }
-        
-        .feature-list li {
-            margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; color: #fff; font-size: 0.95rem;
-        }
-        .feature-list li::before {
-            content: "✓"; color: var(--accent-color); position: absolute; left: 0; font-weight: bold;
-        }
-
-        /* --- НОВЫЙ БЛОК: ПРОЦЕСС --- */
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-        .step-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 12px;
+        .module-list li {
             position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
         }
-        .step-num {
-            position: absolute; top: -15px; left: 20px;
-            background-color: var(--accent-color); color: #0B1120;
-            width: 32px; height: 32px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1rem;
-        }
-        .step-card h3 { margin-top: 0.5rem; margin-bottom: 0.5rem; color: #fff; font-size: 1.2rem; }
-        .step-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
-
-        /* --- НОВЫЙ БЛОК: СРАВНЕНИЕ --- */
-        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .comp-card { padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); }
-        .comp-bad { background: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.2); }
-        .comp-good { background: rgba(34, 197, 94, 0.05); border-color: rgba(34, 197, 94, 0.2); }
-        .comp-title { font-weight: 800; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
-
-        /* --- ТАРИФЫ (Обновленные) --- */
-        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2rem; }
-        .price-card {
-            background-color: var(--bg-light);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2.5rem 2rem;
-            display: flex; flex-direction: column;
-        }
-        .price-card.featured {
-            border-color: var(--accent-color);
-            background: rgba(56, 189, 248, 0.03);
-            transform: scale(1.05); z-index: 2;
-        }
-        .price-tag { font-size: 2.5rem; font-weight: 800; color: #fff; margin: 1rem 0; }
-        .price-desc { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 2rem; }
-
-        /* Мобильная адаптация */
-        @media (max-width: 900px) {
-            .tech-grid, .steps-grid, .comparison-grid, .pricing-grid { grid-template-columns: 1fr; }
-            .price-card.featured { transform: none; }
-            .hero-title { font-size: 2rem; } /* Подгонка под ваш стиль */
+        .module-list li::before {
+            content: "✓";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-
     <header class="main-header">
         <div class="container">
             <a href="index.html" class="logo-link"><div class="logo">AI LEAD</div></a>
-            
-            <nav class="desktop-nav">
-                <a href="#technology">Технология</a>
-                <a href="#process">Процесс</a>
-                <a href="#pricing">Тарифы</a>
-                <a href="#contact">Контакты</a>
+            <nav class="main-nav">
+                <a href="#process">Как это работает</a>
+                <a href="pricing.html">Цены для первых партнеров</a>
+                <a href="#features">Преимущества</a>
             </nav>
-
-            <div class="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-        <div class="mobile-nav">
-            <a href="#technology">Технология</a>
-            <a href="#process">Процесс</a>
-            <a href="#pricing">Тарифы</a>
-            <a href="#contact">Контакты</a>
+            <div class="hamburger-menu"><span></span><span></span><span></span></div>
         </div>
     </header>
+    
+    <div class="mobile-nav">
+        <a href="#process">Как это работает</a>
+        <a href="pricing.html">Цены для первых партнеров</a>
+        <a href="#features">Преимущества</a>
+        <a href="#contact">Контакты</a>
+    </div>
 
     <main>
-        <section class="hero-section">
+        <section class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <h1>Хватит писать письма,<br><span style="color: var(--accent-color);">которые удаляют.</span></h1>
-                    <p class="hero-subtitle">
-                        Мы заменили ручной труд менеджеров на два AI-модуля. Находим прямые контакты директоров, отсеиваем конкурентов и начинаем диалоги, которые приводят к сделкам.
-                    </p>
+                    <h1>Хватит писать письма, которые удаляют.</h1>
+                    <p>Мы заменили ручной труд менеджеров на два AI-модуля. Находим прямые контакты директоров, отсеиваем конкурентов и начинаем диалоги, которые приводят к сделкам.</p>
+                    
                     <div class="hero-buttons">
-                        <a href="#pricing" class="cta-button">Выбрать Тариф</a>
-                        <a href="#technology" class="cta-button outline">Изучить технологию</a>
+                        <a href="pricing.html" class="cta-button hero-cta">Выбрать Тариф</a>
+                        <a href="#features" class="cta-button cta-outline">Изучить технологию</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="technology">
+        <section id="process" class="process-section">
             <div class="container">
-                <h2 class="section-title">Экосистема AI LEAD</h2>
-                <p class="section-subtitle">Один менеджер делает это месяц. Наша система — 24 часа.</p>
-
-                <div class="tech-grid">
-                    <div class="tech-card">
-                        <span class="tech-icon">📡</span>
-                        <span class="tech-label" style="color: #8b5cf6;">Модуль Разведки</span>
-                        <h3>AI LEAD Search</h3>
-                        <p>Ваш цифровой скаут. Анализирует бизнес, строит стратегию поиска и находит именно тех, у кого есть деньги и потребность.</p>
-                        <ul class="feature-list">
-                            <li><strong>Поиск ЛПР:</strong> Находит прямые мобильные Директоров.</li>
-                            <li><strong>Фильтр "Свой-Чужой":</strong> Отсекает конкурентов.</li>
-                            <li><strong>Вечный актив:</strong> База остается у вас навсегда.</li>
-                        </ul>
+                <h2>Как мы работаем</h2>
+                <p class="section-subtitle">От анализа ниши до теплых переговоров за 4 шага.</p>
+                <div class="process-grid">
+                    <div class="process-step">
+                        <div class="step-number">01</div>
+                        <h3>Анализ (ICP)</h3>
+                        <p>Мы не ищем "всех подряд". Система изучает ваш бизнес и создает портрет идеального клиента. Это исключает попадание в базу нецелевых лидов.</p>
                     </div>
-
-                    <div class="tech-card">
-                        <span class="tech-icon">📨</span>
-                        <span class="tech-label" style="color: #22c55e;">Модуль Аутрича</span>
-                        <h3>AI LEAD Mail</h3>
-                        <p>Машина диалогов. Превращает "холодную" базу в теплые встречи, имитируя поведение человека при переписке.</p>
-                        <ul class="feature-list">
-                            <li><strong>Гипер-персонализация:</strong> Находит повод для диалога.</li>
-                            <li><strong>Safe-Send:</strong> Гарантирует попадание в "Входящие".</li>
-                            <li><strong>Результат:</strong> Ответы "Интересно, давайте обсудим".</li>
-                        </ul>
+                    <div class="process-step">
+                        <div class="step-number">02</div>
+                        <h3>AI Разведка</h3>
+                        <p>Модуль Search сканирует рынок. Он находит не просто info@, а <strong>прямые контакты</strong> ЛПР (директоров) и фильтрует конкурентов ("свой-чужой").</p>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="process" style="background-color: rgba(255,255,255,0.02);">
-            <div class="container">
-                <h2 class="section-title">Как мы работаем</h2>
-                <div class="steps-grid">
-                    <div class="step-card">
-                        <div class="step-num">1</div>
-                        <h3>Анализ</h3>
-                        <p>Изучаем ваш бизнес и создаем "Портрет Идеального Клиента" (ICP).</p>
+                    <div class="process-step">
+                        <div class="step-number">03</div>
+                        <h3>AI Аутрич</h3>
+                        <p>Модуль Mail читает новости на сайте клиента и пишет персональное письмо для каждого. Это создает эффект личного знакомства.</p>
                     </div>
-                    <div class="step-card">
-                        <div class="step-num">2</div>
-                        <h3>Разведка</h3>
-                        <p>Запускаем AI Search. Собираем базу, находим ЛПР и телефоны.</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-num">3</div>
-                        <h3>Аутрич</h3>
-                        <p>Запускаем AI Mail. Пишем персональные письма и начинаем диалог.</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-num">4</div>
+                    <div class="process-step">
+                        <div class="step-number">04</div>
                         <h3>Сделки</h3>
-                        <p>Передаем вам "теплых" клиентов, готовых к переговорам.</p>
+                        <p>Вы получаете ответы от заинтересованных клиентов прямо во "Входящие". Вам остается только провести переговоры.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section>
+        <section id="features" class="features-section">
             <div class="container">
-                <h2 class="section-title">Почему нам отвечают?</h2>
-                <p class="section-subtitle">Разница между "Спамом" и "Разведкой" — в подходе.</p>
-                <div class="comparison-grid">
-                    <div class="comp-card comp-bad">
-                        <div class="comp-title" style="color: #ef4444;">❌ Обычная рассылка</div>
-                        <p style="color: var(--text-secondary);">
-                            Шаблонный текст "Купите у нас". Отправляется тысячам адресов одновременно.
-                            <br><br><b>Результат:</b> Попадание в спам, негатив, удаление без прочтения.
-                        </p>
-                    </div>
-                    <div class="comp-card comp-good">
-                        <div class="comp-title" style="color: #22c55e;">✅ Подход AI LEAD</div>
-                        <p style="color: var(--text-secondary);">
-                            Письмо начинается с новости клиента ("Видел ваше открытие в Бресте..."). Отправляется штучно.
-                            <br><br><b>Результат:</b> Доверие, интерес, начало диалога.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+                 <h2>Наша Технология (Экосистема)</h2>
+                 <p class="section-subtitle">Два мощных модуля, которые работают 24/7 вместо целого отдела лидогенерации.</p>
+                 
+                 <div class="features-grid">
+                     <div class="feature-item">
+                         <div class="feature-problem" style="color: #8b5cf6; border-color: #8b5cf6;">Модуль 01: Разведка</div>
+                         <h3>AI LEAD Search</h3>
+                         <p>Ваш цифровой скаут. Это не просто парсер, это аналитическая система.</p>
+                         <ul class="module-list">
+                             <li>Поиск прямых мобильных номеров Директоров и РОПов.</li>
+                             <li>Автоматический фильтр конкурентов и поставщиков.</li>
+                             <li>Формирование "Вечного актива": база остается у вас навсегда.</li>
+                         </ul>
+                     </div>
 
-        <section id="pricing">
-            <div class="container">
-                <h2 class="section-title">Тарифы</h2>
-                <p class="section-subtitle">Инвестиция в результат, а не в процесс.</p>
-
-                <div class="pricing-grid">
-                    <div class="price-card">
-                        <h3>Тест-Драйв</h3>
-                        <div class="price-tag">300 BYN</div>
-                        <p class="price-desc">Попробовать качество на вкус</p>
-                        <ul class="feature-list" style="flex-grow: 1;">
-                            <li>50-70 отборных лидов</li>
-                            <li>Проверка телефонов и ЛПР</li>
-                            <li>Формат: Excel</li>
-                            <li>Срок: 24 часа</li>
-                        </ul>
-                        <a href="https://t.me/saklesov" class="cta-button outline" style="margin-top: 2rem;">Попробовать</a>
-                    </div>
-
-                    <div class="price-card featured">
-                        <div style="color: var(--accent-color); font-size: 0.8rem; font-weight: bold; text-transform: uppercase; margin-bottom: 0.5rem;">Выбор бизнеса</div>
-                        <h3>База под ключ</h3>
-                        <div class="price-tag" style="color: var(--accent-color);">990 BYN</div>
-                        <p class="price-desc">Готовый актив для отдела продаж</p>
-                        <ul class="feature-list" style="flex-grow: 1;">
-                            <li><strong>500+</strong> целевых компаний</li>
-                            <li>Контакты Директоров / РОПов</li>
-                            <li><strong>Стратегия поиска (ICP)</strong></li>
-                            <li>Полная очистка от мусора</li>
-                            <li>Разбивка по отраслям</li>
-                        </ul>
-                        <a href="https://t.me/saklesov" class="cta-button" style="margin-top: 2rem;">Заказать Актив</a>
-                    </div>
-
-                    <div class="price-card">
-                        <h3>Аутрич под ключ</h3>
-                        <div class="price-tag">2400 BYN</div>
-                        <p class="price-desc">Мы ищем и пишем за вас</p>
-                        <ul class="feature-list" style="flex-grow: 1;">
-                            <li>Всё из тарифа "База"</li>
-                            <li>Написание цепочки писем</li>
-                            <li>Запуск AI-рассылки</li>
-                            <li>Настройка домена</li>
-                            <li>Передача теплых ответов</li>
-                        </ul>
-                        <a href="https://t.me/saklesov" class="cta-button outline" style="margin-top: 2rem;">Обсудить</a>
-                    </div>
-                </div>
+                     <div class="feature-item">
+                         <div class="feature-problem" style="color: #22c55e; border-color: #22c55e;">Модуль 02: Аутрич</div>
+                         <h3>AI LEAD Mail</h3>
+                         <p>Машина диалогов. Превращает "холодную" базу в теплые встречи.</p>
+                         <ul class="module-list">
+                             <li>Гипер-персонализация: AI находит повод (инфоповод) на сайте клиента.</li>
+                             <li>Технология Safe-Send: имитация человека для обхода спам-фильтров.</li>
+                             <li>Письма без шаблонов "Купите у нас" — только ценность.</li>
+                         </ul>
+                     </div>
+                     
+                     <div class="feature-item">
+                         <div class="feature-problem">Почему это работает лучше?</div>
+                         <h3>Сравнение подходов</h3>
+                         <p><strong>Обычная рассылка:</strong> Один текст на 1000 человек. Результат: Спам и негатив.</p>
+                         <br>
+                         <p><strong>AI LEAD:</strong> 1000 уникальных писем, написанных под каждого клиента. Результат: Доверие и начало диалога.</p>
+                     </div>
+                 </div>
             </div>
         </section>
     </main>
@@ -314,7 +178,7 @@
     <footer id="contact" class="contact-section">
         <div class="container">
             <h2>Готовы начать?</h2>
-            <p class="section-subtitle">Свяжитесь с нами, чтобы обсудить детали и запустить вашу первую кампанию.</p>
+            <p class="section-subtitle">Свяжитесь с нами, чтобы обсудить детали и запустить вашу первую кампанию по специальной цене для первых партнеров.</p>
             <div class="contact-details">
                 <p><strong>Email:</strong> <a href="mailto:s.a.klesov@ailead.site">s.a.klesov@ailead.site</a></p>
                 <p><strong>Телефон:</strong> <a href="tel:+375445516200">+375 44 551 62 00</a></p>
@@ -328,24 +192,12 @@
         </div>
     </footer>
 
+    <a href="pricing.html" class="floating-cta cta-button">Выбрать Тариф</a>
+
     <script>
-        const hamburger = document.querySelector('.hamburger-menu');
-        const mobileNav = document.querySelector('.mobile-nav');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            if (mobileNav.style.display === 'flex') {
-                mobileNav.style.display = 'none';
-            } else {
-                mobileNav.style.display = 'flex';
-            }
-        });
-
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileNav.style.display = 'none';
-            });
+        document.querySelector('.hamburger-menu').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.mobile-nav').classList.toggle('active');
         });
     </script>
 </body>

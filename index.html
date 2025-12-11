@@ -10,7 +10,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI LEAD — Услуги B2B-Лидогенерации</title>
+    <title>AI LEAD — Технологии поиска клиентов</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,20 +18,22 @@
 
     <style>
         /* =========================================
-           НАСТРОЙКИ ДИЗАЙНА И ОТСТУПОВ
+           ОСНОВНЫЕ СТИЛИ И ПЕРЕМЕННЫЕ
            ========================================= */
         :root {
-            --bg-color: #0B1120;       /* Основной фон (Темно-синий) */
-            --bg-card: #151e32;        /* Фон карточек (Чуть светлее) */
-            --text-primary: #FFFFFF;   /* Белый текст */
-            --text-secondary: #94A3B8; /* Серый текст */
-            --accent-color: #38BDF8;   /* Голубой акцент */
+            --bg-color: #0B1120;
+            --bg-light: #1A2035;       /* Фон блоков */
+            --bg-darker: #0f172a;      /* Фон для контраста */
+            --text-primary: #FFFFFF;
+            --text-secondary: #94A3B8;
+            --accent-color: #38BDF8;   /* Голубой */
+            --highlight-color: #F59E0B;
             --border-color: rgba(255, 255, 255, 0.1);
             --font-main: 'Inter', sans-serif;
             
-            /* Стандартные отступы */
-            --section-padding: 6rem 0; /* Большие отступы между блоками */
-            --container-width: 1200px;
+            /* Цвета модулей для кодирования */
+            --module-1-color: #8b5cf6; /* Фиолетовый */
+            --module-2-color: #22c55e; /* Зеленый */
         }
 
         *, *::before, *::after { box-sizing: border-box; }
@@ -44,154 +46,101 @@
             line-height: 1.6;
         }
 
-        /* КОНТЕЙНЕР (Выравнивание по центру) */
-        .container {
-            max-width: var(--container-width);
-            margin: 0 auto;
-            padding: 0 2rem; /* Отступы по бокам на мобилках */
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
         /* --- ШАПКА --- */
         .main-header {
             background-color: rgba(11, 17, 32, 0.95);
             backdrop-filter: blur(10px);
-            padding: 1.2rem 0;
+            padding: 1rem 0;
             border-bottom: 1px solid var(--border-color);
             position: sticky; top: 0; z-index: 100;
         }
         .header-wrap { display: flex; justify-content: space-between; align-items: center; }
-        
         .logo { font-size: 1.5rem; font-weight: 800; color: #fff; text-decoration: none; }
         
-        .nav-desktop { display: flex; gap: 2.5rem; }
+        .nav-desktop { display: flex; gap: 2rem; }
         .nav-desktop a {
             text-decoration: none; color: var(--text-secondary); font-weight: 500; transition: 0.3s;
         }
         .nav-desktop a:hover { color: #fff; }
 
         /* --- КНОПКИ --- */
-        .btn {
+        .cta-button {
             display: inline-block; padding: 0.8rem 1.8rem; border-radius: 8px;
-            text-decoration: none; font-weight: 600; text-align: center; transition: 0.3s;
+            text-decoration: none; font-weight: 700; text-align: center; transition: 0.3s;
         }
         .btn-primary {
             background-color: var(--accent-color); color: var(--bg-color);
         }
-        .btn-primary:hover {
-            transform: translateY(-2px); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.25);
-        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.25); }
         .btn-outline {
             background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color);
         }
-        .btn-outline:hover {
-            background: rgba(56, 189, 248, 0.1); color: #fff;
-        }
+        .btn-outline:hover { background: rgba(56, 189, 248, 0.1); color: #fff; }
 
         /* --- ГЛАВНЫЙ ЭКРАН --- */
-        .hero { padding: 7rem 0; text-align: center; }
-        .hero h1 {
-            font-size: 3.5rem; line-height: 1.2; font-weight: 800; margin-bottom: 1.5rem;
-        }
-        .hero p {
-            font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 3rem;
-        }
+        .hero { padding: 8rem 0; text-align: center; }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem; }
+        .hero p { font-size: 1.25rem; color: var(--text-secondary); max-width: 750px; margin: 0 auto 3rem; }
         .hero-btns { display: flex; gap: 1.5rem; justify-content: center; }
 
-        /* --- ЗАГОЛОВКИ СЕКЦИЙ --- */
-        .section-header { text-align: center; margin-bottom: 4rem; }
-        .section-header h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; color: #fff; }
-        .section-header p { font-size: 1.15rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto; }
-
-        /* --- БЛОК 1: НАШИ УСЛУГИ (МОДУЛИ) --- */
-        .services-section { padding: var(--section-padding); border-top: 1px solid var(--border-color); }
+        /* --- ОБЩИЕ СТИЛИ СЕКЦИЙ --- */
+        section { padding: 6rem 0; border-top: 1px solid var(--border-color); }
         
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr; /* Две колонки */
-            gap: 3rem; /* Отступ между карточками */
-            align-items: stretch;
+        .module-header { text-align: left; margin-bottom: 3rem; }
+        .module-tag {
+            display: inline-block; padding: 0.4rem 1rem; border-radius: 20px;
+            font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 1rem; text-transform: uppercase;
         }
+        .module-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; color: #fff; }
+        .module-desc { font-size: 1.15rem; color: var(--text-secondary); max-width: 800px; }
 
-        .service-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 3rem; /* Просторные отступы внутри */
-            display: flex; flex-direction: column;
-            transition: transform 0.3s;
+        /* --- СЕТКА ПРОЦЕССА (STEP BY STEP) --- */
+        .process-row {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 4rem;
         }
-        .service-card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
-
-        .service-badge {
-            display: inline-block; background: rgba(56, 189, 248, 0.1); color: var(--accent-color);
-            padding: 0.4rem 1rem; border-radius: 20px; font-weight: 700; font-size: 0.85rem;
-            margin-bottom: 1.5rem; align-self: flex-start;
+        .process-card {
+            background: var(--bg-light); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); position: relative;
         }
-
-        .service-card h3 { font-size: 2rem; margin: 0 0 1rem 0; }
-        .service-card p { color: var(--text-secondary); font-size: 1.05rem; margin-bottom: 2rem; }
-
-        .service-features ul { list-style: none; padding: 0; }
-        .service-features li {
-            position: relative; padding-left: 2rem; margin-bottom: 1rem; color: #fff;
+        .process-num {
+            font-size: 3rem; font-weight: 800; opacity: 0.3; margin-bottom: 0.5rem; line-height: 1;
         }
-        .service-features li::before {
-            content: "✓"; color: var(--accent-color); position: absolute; left: 0; font-weight: bold; font-size: 1.2rem;
-        }
+        .process-card h4 { font-size: 1.2rem; margin-bottom: 0.5rem; color: #fff; }
+        .process-card p { font-size: 0.95rem; color: var(--text-secondary); margin: 0; }
 
-        /* --- БЛОК 2: СРАВНЕНИЕ (Таблица) --- */
-        .comparison-section { padding: var(--section-padding); background-color: rgba(255,255,255,0.02); }
+        /* --- БЛОК СРАВНЕНИЯ --- */
+        .comparison-wrapper {
+            background: rgba(255,255,255,0.03); padding: 3rem; border-radius: 16px; border: 1px solid var(--border-color);
+        }
+        .comparison-title { text-align: center; margin-bottom: 2rem; font-size: 1.5rem; font-weight: 700; }
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
         
-        .compare-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 3rem;
+        .comp-col h4 { font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
+        .comp-item {
+            margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05);
         }
+        .comp-item strong { display: block; color: #fff; margin-bottom: 0.2rem; }
+        .comp-item span { font-size: 0.95rem; color: var(--text-secondary); }
 
-        .compare-box { padding: 2.5rem; border-radius: 12px; border: 1px solid var(--border-color); }
+        /* --- ПОДВАЛ (КОНТАКТЫ) --- */
+        .contact-section { background-color: var(--bg-light); text-align: center; padding: 6rem 0; }
+        .contact-section h2 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800; }
+        .contact-subtitle { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem; }
         
-        .compare-bad { border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.05); }
-        .compare-bad h3 { color: #F87171; margin-bottom: 1.5rem; font-size: 1.5rem; }
-        
-        .compare-good { border-color: rgba(56, 189, 248, 0.3); background: rgba(56, 189, 248, 0.05); }
-        .compare-good h3 { color: var(--accent-color); margin-bottom: 1.5rem; font-size: 1.5rem; }
+        .contact-details p { font-size: 1.2rem; margin: 0.8rem 0; }
+        .contact-details a { color: var(--accent-color); text-decoration: none; font-weight: 500; }
+        .social-links { margin-top: 1rem; }
+        .social-link { color: #fff; margin: 0 10px; text-decoration: none; opacity: 0.8; transition: 0.3s; }
+        .social-link:hover { opacity: 1; color: var(--accent-color); }
+        .copyright { margin-top: 4rem; opacity: 0.5; font-size: 0.9rem; }
 
-        .compare-item { margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem; }
-        .compare-item strong { display: block; color: #fff; margin-bottom: 0.3rem; }
-        .compare-item span { color: var(--text-secondary); font-size: 0.95rem; }
-
-        /* --- БЛОК 3: ПРОЦЕСС --- */
-        .process-section { padding: var(--section-padding); border-top: 1px solid var(--border-color); }
-        .process-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
-        }
-        .step {
-            background: var(--bg-card); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color);
-        }
-        .step-num {
-            color: var(--accent-color); font-size: 3rem; font-weight: 800; line-height: 1; margin-bottom: 1rem; opacity: 0.5;
-        }
-        .step h4 { font-size: 1.25rem; margin-bottom: 0.5rem; }
-        .step p { color: var(--text-secondary); font-size: 0.95rem; }
-
-        /* --- ФУТЕР --- */
-        .footer { padding: 4rem 0; border-top: 1px solid var(--border-color); text-align: center; }
-        .footer-links { margin: 2rem 0; }
-        .footer-links a { color: #fff; text-decoration: none; margin: 0 1rem; }
-        .footer p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem; }
-
-        /* --- МОБИЛЬНОЕ МЕНЮ --- */
-        .mobile-menu-btn { display: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
-        .mobile-nav { display: none; } /* Скрыто по умолчанию */
-
-        /* АДАПТИВНОСТЬ */
+        /* --- АДАПТИВНОСТЬ --- */
         @media (max-width: 900px) {
             .hero h1 { font-size: 2.2rem; }
             .hero-btns { flex-direction: column; }
-            .services-grid, .compare-grid, .process-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .process-row, .comparison-grid { grid-template-columns: 1fr; gap: 2rem; }
             .nav-desktop { display: none; }
-            .mobile-menu-btn { display: block; }
         }
     </style>
 </head>
@@ -200,162 +149,187 @@
     <header class="main-header">
         <div class="container header-wrap">
             <a href="index.html" class="logo">AI LEAD</a>
-            
             <nav class="nav-desktop">
-                <a href="#services">Услуги</a>
-                <a href="#comparison">Сравнение</a>
+                <a href="#module-1">AI Search</a>
+                <a href="#module-2">AI Mail</a>
                 <a href="pricing.html">Цены</a>
             </nav>
-
-            <div class="mobile-menu-btn">☰</div>
+            <div style="font-size: 1.5rem; color: #fff; display: none;">☰</div>
         </div>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h1>Комплексная B2B-лидогенерация:<br>Два модуля для вашего роста</h1>
+            <h1>Две технологии,<br>которые заменят отдел лидогенерации</h1>
             <p>
-                Мы не просто «продаем базу». Мы предоставляем технологию поиска ЛПР и систему умной рассылки, 
-                которая превращает холодные контакты в теплые встречи.
+                Мы разделили процесс продаж на два этапа: умный поиск ЛПР и персонализированная коммуникация. 
+                Используйте их вместе или по отдельности.
             </p>
             <div class="hero-btns">
-                <a href="pricing.html" class="btn btn-primary">Посмотреть Тарифы</a>
-                <a href="#services" class="btn btn-outline">Узнать про модули</a>
+                <a href="pricing.html" class="cta-button btn-primary">Смотреть Тарифы</a>
+                <a href="#module-1" class="cta-button btn-outline">Узнать про модули</a>
             </div>
         </div>
     </section>
 
-    <section id="services" class="services-section">
+    <section id="module-1">
         <div class="container">
-            <div class="section-header">
-                <h2>Наши Ключевые Услуги</h2>
-                <p>Вы можете заказать только Базу (Модуль 1) или полный комплекс с Рассылкой (Модуль 2).</p>
+            <div class="module-header">
+                <span class="module-tag" style="background: rgba(139, 92, 246, 0.15); color: var(--module-1-color);">Модуль 01</span>
+                <h2 class="module-title">AI LEAD Search (Разведка)</h2>
+                <p class="module-desc">
+                    Это ваш цифровой аналитик. Он сканирует интернет, находит прямые контакты руководителей и формирует вашу эксклюзивную базу клиентов. Больше никаких "холодных" звонков на общие номера.
+                </p>
             </div>
 
-            <div class="services-grid">
-                
-                <div class="service-card">
-                    <span class="service-badge">ОСНОВНОЙ ПРОДУКТ</span>
-                    <h3>1. Сбор Эксклюзивной Базы (Search)</h3>
-                    <p>
-                        Это фундамент продаж. Наш AI-разведчик сканирует рынок, чтобы найти для вас «золотые» контакты, 
-                        которых нет в открытых справочниках.
-                    </p>
-                    <div class="service-features">
-                        <ul>
-                            <li><strong>Принцип работы:</strong> Мы загружаем ваш портрет клиента (ICP) в систему. Она фильтрует тысячи сайтов, отсекая нецелевые.</li>
-                            <li><strong>Поиск ЛПР:</strong> Находим ФИО директоров, учредителей и РОПов.</li>
-                            <li><strong>Прямые контакты:</strong> Добываем мобильные телефоны и личные email.</li>
-                            <li><strong>Чистота данных:</strong> Удаляем конкурентов, ликвидированные фирмы и дубли.</li>
-                        </ul>
-                    </div>
+            <h3 style="margin-bottom: 1.5rem; color: #fff;">Как это работает:</h3>
+            <div class="process-row">
+                <div class="process-card">
+                    <div class="process-num" style="color: var(--module-1-color);">01</div>
+                    <h4>Анализ ICP</h4>
+                    <p>Мы загружаем критерии вашего идеального клиента (отрасль, регион, оборот) в систему.</p>
                 </div>
-
-                <div class="service-card">
-                    <span class="service-badge">ДОПОЛНИТЕЛЬНЫЙ МОДУЛЬ</span>
-                    <h3>2. Умный Аутрич (Mail)</h3>
-                    <p>
-                        Система доставки сообщений. Мы берем базу из Модуля 1 и начинаем диалог с каждым клиентом индивидуально.
-                    </p>
-                    <div class="service-features">
-                        <ul>
-                            <li><strong>Принцип работы:</strong> AI заходит на сайт каждого клиента, читает новости и пишет уникальное письмо на основе их событий.</li>
-                            <li><strong>Safe-Send:</strong> Технология отправки с имитацией человека (паузы, прогрев), чтобы не попасть в спам.</li>
-                            <li><strong>Результат:</strong> Вы получаете ответы «Интересно» или «Давайте созвонимся» на вашу почту.</li>
-                        </ul>
-                    </div>
+                <div class="process-card">
+                    <div class="process-num" style="color: var(--module-1-color);">02</div>
+                    <h4>Глубокий скан</h4>
+                    <p>AI прочесывает тысячи сайтов и реестров в реальном времени, отбирая подходящие компании.</p>
                 </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="comparison" class="comparison-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Сравнение подходов</h2>
-                <p>Почему AI-разведка эффективнее, чем покупка готовых баз или парсинг.</p>
+                <div class="process-card">
+                    <div class="process-num" style="color: var(--module-1-color);">03</div>
+                    <h4>Поиск ЛПР</h4>
+                    <p>Находим ФИО директоров и их <strong>мобильные телефоны</strong>, скрытые из открытого доступа.</p>
+                </div>
+                <div class="process-card">
+                    <div class="process-num" style="color: var(--module-1-color);">04</div>
+                    <h4>Фильтрация</h4>
+                    <p>Удаляем конкурентов, дубли и мертвые фирмы. Выгружаем чистый Excel.</p>
+                </div>
             </div>
 
-            <div class="compare-grid">
-                <div class="compare-box compare-bad">
-                    <h3>❌ Обычный подход</h3>
-                    <div class="compare-item">
-                        <strong>Актуальность данных</strong>
-                        <span>Базы собирались год назад. Половина телефонов не работает.</span>
+            <div class="comparison-wrapper">
+                <div class="comparison-title">Сравнение подходов к сбору базы</div>
+                <div class="comparison-grid">
+                    <div class="comp-col">
+                        <h4 style="color: #ef4444;">❌ Обычная покупка базы</h4>
+                        <div class="comp-item">
+                            <strong>Актуальность</strong>
+                            <span>Данные собраны год назад. Телефоны не работают.</span>
+                        </div>
+                        <div class="comp-item">
+                            <strong>Контакты</strong>
+                            <span>Только городские номера секретарей и info@ почты.</span>
+                        </div>
+                        <div class="comp-item">
+                            <strong>Чистота</strong>
+                            <span>В списке ваши конкуренты и закрытые компании.</span>
+                        </div>
                     </div>
-                    <div class="compare-item">
-                        <strong>Контакты</strong>
-                        <span>Только общие почты (info@, sales@) и городские номера секретарей.</span>
-                    </div>
-                    <div class="compare-item">
-                        <strong>Качество</strong>
-                        <span>Много мусора: в списке могут быть ваши конкуренты или закрытые фирмы.</span>
-                    </div>
-                </div>
-
-                <div class="compare-box compare-good">
-                    <h3>✅ Подход AI LEAD</h3>
-                    <div class="compare-item">
-                        <strong>Актуальность данных</strong>
-                        <span>Scan-On-Demand. Мы сканируем рынок в момент вашего заказа. Данные свежие на сегодня.</span>
-                    </div>
-                    <div class="compare-item">
-                        <strong>Контакты</strong>
-                        <span>Находим <strong>мобильные</strong> номера Директоров и личные почты ЛПР.</span>
-                    </div>
-                    <div class="compare-item">
-                        <strong>Качество</strong>
-                        <span>Фильтр «Свой-Чужой». Мы программно удаляем конкурентов и нецелевой бизнес.</span>
+                    <div class="comp-col">
+                        <h4 style="color: var(--module-1-color);">✅ AI LEAD Search</h4>
+                        <div class="comp-item">
+                            <strong>Актуальность</strong>
+                            <span>Scan-On-Demand. Данные проверяются в день заказа.</span>
+                        </div>
+                        <div class="comp-item">
+                            <strong>Контакты</strong>
+                            <span>Прямые мобильные телефоны ЛПР и личные email.</span>
+                        </div>
+                        <div class="comp-item">
+                            <strong>Чистота</strong>
+                            <span>Фильтр "Свой-Чужой". 99% целевых клиентов.</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="process-section">
+    <section id="module-2" style="background-color: var(--bg-darker);">
         <div class="container">
-            <div class="section-header">
-                <h2>Как мы работаем</h2>
+            <div class="module-header">
+                <span class="module-tag" style="background: rgba(34, 197, 94, 0.15); color: var(--module-2-color);">Модуль 02</span>
+                <h2 class="module-title">AI LEAD Mail (Аутрич)</h2>
+                <p class="module-desc">
+                    Система умной коммуникации. Мы берем базу и начинаем диалог с каждым клиентом индивидуально. Это не рассылка, это имитация личной переписки в промышленных масштабах.
+                </p>
             </div>
-            <div class="process-grid">
-                <div class="step">
-                    <div class="step-num">01</div>
-                    <h4>Анализ</h4>
-                    <p>Изучаем ваш бизнес и составляем портрет идеального клиента (ICP), чтобы не искать лишних.</p>
+
+            <h3 style="margin-bottom: 1.5rem; color: #fff;">Как это работает:</h3>
+            <div class="process-row">
+                <div class="process-card">
+                    <div class="process-num" style="color: var(--module-2-color);">01</div>
+                    <h4>Анализ сайта</h4>
+                    <p>AI заходит на сайт каждого клиента из базы и читает их новости, раздел "О нас" и проекты.</p>
                 </div>
-                <div class="step">
-                    <div class="step-num">02</div>
-                    <h4>Разведка</h4>
-                    <p>Запускаем Модуль 1. Собираем базу, верифицируем телефоны и чистим список.</p>
+                <div class="process-card">
+                    <div class="process-num" style="color: var(--module-2-color);">02</div>
+                    <h4>Генерация</h4>
+                    <p>На основе найденного пишется уникальное письмо. <i>"Видел вашу новость про..."</i></p>
                 </div>
-                <div class="step">
-                    <div class="step-num">03</div>
-                    <h4>Аутрич</h4>
-                    <p>Запускаем Модуль 2 (по желанию). Пишем и отправляем персональные письма.</p>
+                <div class="process-card">
+                    <div class="process-num" style="color: var(--module-2-color);">03</div>
+                    <h4>Safe-Send</h4>
+                    <p>Письма уходят поштучно с паузами, имитируя человека. Это гарантирует <strong>Inbox</strong>.</p>
                 </div>
-                <div class="step">
-                    <div class="step-num">04</div>
-                    <h4>Сделка</h4>
-                    <p>Передаем вам готовый Excel-файл или теплые заявки от клиентов.</p>
+                <div class="process-card">
+                    <div class="process-num" style="color: var(--module-2-color);">04</div>
+                    <h4>Результат</h4>
+                    <p>Клиент отвечает вам. Вы получаете теплый лид, готовый к общению.</p>
+                </div>
+            </div>
+
+            <div class="comparison-wrapper">
+                <div class="comparison-title">Сравнение подходов к рассылке</div>
+                <div class="comparison-grid">
+                    <div class="comp-col">
+                        <h4 style="color: #ef4444;">❌ Обычная рассылка</h4>
+                        <div class="comp-item">
+                            <strong>Содержание</strong>
+                            <span>Шаблон "Купите у нас". Один текст на всех.</span>
+                        </div>
+                        <div class="comp-item">
+                            <strong>Доставка</strong>
+                            <span>Массовая отправка (1000 писем в секунду). Попадание в СПАМ.</span>
+                        </div>
+                        <div class="comp-item">
+                            <strong>Реакция</strong>
+                            <span>Негатив, удаление, жалоба на спам.</span>
+                        </div>
+                    </div>
+                    <div class="comp-col">
+                        <h4 style="color: var(--module-2-color);">✅ AI LEAD Mail</h4>
+                        <div class="comp-item">
+                            <strong>Содержание</strong>
+                            <span>Гипер-персонализация. Каждое письмо уникально.</span>
+                        </div>
+                        <div class="comp-item">
+                            <strong>Доставка</strong>
+                            <span>Имитация человека. Высокая репутация домена. Inbox 95%+.</span>
+                        </div>
+                        <div class="comp-item">
+                            <strong>Реакция</strong>
+                            <span>Интерес. Ответ: "Давайте обсудим".</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
+    <footer id="contact" class="contact-section">
         <div class="container">
-            <h3>Готовы начать?</h3>
-            <p>Свяжитесь с нами, чтобы обсудить ваш проект.</p>
-            
-            <div class="footer-links">
-                <a href="pricing.html">Тарифы</a>
-                <a href="mailto:s.a.klesov@ailead.site">Email</a>
-                <a href="tel:+375445516200">Телефон</a>
-                <a href="https://t.me/saklesov">Telegram</a>
+            <h2>Готовы начать?</h2>
+            <p class="contact-subtitle">Свяжитесь с нами, чтобы обсудить детали и запустить вашу первую кампанию по специальной цене для первых партнеров.</p>
+            <div class="contact-details">
+                <p><strong>Email:</strong> <a href="mailto:s.a.klesov@ailead.site">s.a.klesov@ailead.site</a></p>
+                <p><strong>Телефон:</strong> <a href="tel:+375445516200">+375 44 551 62 00</a></p>
+                <p class="social-links">
+                    <a href="viber://chat?number=%2B375445516200" class="social-link">Viber</a> |
+                    <a href="https://t.me/saklesov" target="_blank" class="social-link">Telegram</a> | 
+                    <a href="https://t.me/ailead_site" target="_blank" class="social-link">Telegram (канал)</a>
+                </p>
             </div>
-            
-            <p>© 2025 AI LEAD. Все права защищены.</p>
+            <p class="copyright">© 2025 AI LEAD. Все права защищены.</p>
         </div>
     </footer>
 

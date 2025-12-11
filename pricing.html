@@ -10,112 +10,246 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тарифы для первых партнеров — AI LEAD</title>
-    <meta name="description" content="AI LEAD: Находим B2B-клиентов в Беларуси с помощью ИИ. Формируем эксклюзивные базы лидов, проводим верификацию и запускаем гипер-персонализированные email-кампании, которые приводят к встречам.">
-    <link rel="stylesheet" href="style.css">
+    <title>Тарифы — AI LEAD</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           ОСНОВНЫЕ СТИЛИ (КАК НА ГЛАВНОЙ)
+           ========================================= */
+        :root {
+            --bg-color: #0B1120;
+            --bg-light: #1A2035;
+            --text-primary: #FFFFFF;
+            --text-secondary: #94A3B8;
+            --accent-color: #38BDF8;
+            --highlight-color: #F59E0B;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --font-main: 'Inter', sans-serif;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        /* --- ШАПКА --- */
+        .main-header {
+            background-color: rgba(11, 17, 32, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .header-wrap { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: #fff; text-decoration: none; }
+        
+        .nav-desktop { display: flex; gap: 2rem; }
+        /* Ссылки ведут на главную страницу (якоря) */
+        .nav-desktop a {
+            text-decoration: none; color: var(--text-secondary); font-weight: 500; transition: 0.3s;
+        }
+        .nav-desktop a:hover { color: #fff; }
+        /* Активная ссылка */
+        .nav-desktop a.active { color: #fff; }
+
+        /* --- ЗАГОЛОВКИ --- */
+        section { padding: 6rem 0; }
+        .page-title { text-align: center; margin-bottom: 4rem; }
+        .page-title h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; }
+        .page-title p { font-size: 1.2rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto; }
+
+        /* --- ТАРИФЫ --- */
+        .pricing-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 4rem;
+        }
+        .price-card {
+            background: var(--bg-light); border: 1px solid var(--border-color); border-radius: 16px;
+            padding: 2.5rem 2rem; display: flex; flex-direction: column; position: relative;
+        }
+        
+        /* Выделенный тариф */
+        .price-card.featured {
+            border-color: var(--accent-color); background: rgba(56, 189, 248, 0.05);
+            transform: scale(1.05); z-index: 2; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .badge {
+            position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            background: var(--accent-color); color: #0B1120; padding: 0.3rem 1rem;
+            border-radius: 20px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase;
+        }
+
+        .price-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: #fff; }
+        .price-desc { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem; min-height: 3rem; }
+        
+        .price { font-size: 3rem; font-weight: 800; color: #fff; line-height: 1; margin-bottom: 0.5rem; }
+        .price-sub { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 2rem; }
+
+        .price-list { list-style: none; padding: 0; margin: 0 0 2rem 0; flex-grow: 1; }
+        .price-list li {
+            position: relative; padding-left: 1.5rem; margin-bottom: 1rem; color: var(--text-secondary); font-size: 0.95rem;
+        }
+        .price-list li strong { color: #fff; }
+        .price-list li::before {
+            content: "✓"; color: var(--accent-color); position: absolute; left: 0; font-weight: bold;
+        }
+
+        .btn {
+            display: block; width: 100%; padding: 1rem; border-radius: 8px; text-align: center;
+            text-decoration: none; font-weight: 700; transition: 0.3s;
+        }
+        .btn-primary { background: var(--accent-color); color: var(--bg-color); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.2); }
+        .btn-outline { background: transparent; border: 1px solid var(--border-color); color: #fff; }
+        .btn-outline:hover { border-color: var(--accent-color); color: var(--accent-color); }
+
+        /* --- FAQ --- */
+        .faq-section { background: rgba(255,255,255,0.02); border-top: 1px solid var(--border-color); }
+        .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1000px; margin: 0 auto; }
+        .faq-item h4 { font-size: 1.2rem; margin-bottom: 0.5rem; color: #fff; }
+        .faq-item p { color: var(--text-secondary); font-size: 0.95rem; }
+
+        /* --- ПОДВАЛ --- */
+        .contact-section { background-color: var(--bg-light); text-align: center; padding: 6rem 0; border-top: 1px solid var(--border-color); }
+        .contact-section h2 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800; }
+        .contact-subtitle { color: var(--text-secondary); font-size: 1.25rem; max-width: 800px; margin: 0 auto 4rem; }
+        .contact-details p { font-size: 1.2rem; margin: 0.8rem 0; }
+        .contact-details a { color: var(--accent-color); text-decoration: none; font-weight: 500; }
+        .social-links { margin-top: 1rem; }
+        .social-link { color: #fff; margin: 0 10px; text-decoration: none; opacity: 0.8; transition: 0.3s; }
+        .social-link:hover { opacity: 1; color: var(--accent-color); }
+        .copyright { margin-top: 4rem; opacity: 0.5; font-size: 0.9rem; }
+
+        /* --- АДАПТИВ --- */
+        @media (max-width: 900px) {
+            .pricing-grid, .faq-grid { grid-template-columns: 1fr; }
+            .price-card.featured { transform: none; margin: 2rem 0; }
+            .nav-desktop { display: none; }
+        }
+    </style>
 </head>
 <body>
+
     <header class="main-header">
-        <div class="container">
-            <a href="index.html" class="logo-link"><div class="logo">AI LEAD</div></a>
-            <nav class="main-nav">
-                <a href="index.html#process">Как это работает</a>
-                <a href="pricing.html">Цены для первых партнеров</a>
-                <a href="index.html#features">Преимущества</a>
+        <div class="container header-wrap">
+            <a href="index.html" class="logo">AI LEAD</a>
+            <nav class="nav-desktop">
+                <a href="index.html#module-1">AI Search</a>
+                <a href="index.html#module-2">AI Mail</a>
+                <a href="pricing.html" class="active">Цены</a>
+                <a href="#contact">Контакты</a>
             </nav>
-            <div class="hamburger-menu"><span></span><span></span><span></span></div>
+            <div style="font-size: 1.5rem; color: #fff; display: none;">☰</div>
         </div>
     </header>
-    <div class="mobile-nav">
-        <a href="index.html#process">Как это работает</a>
-        <a href="pricing.html">Цены</a>
-        <a href="index.html#features">Преимущества</a>
-        <a href="index.html#contact">Контакты</a>
-    </div>
 
-    <main>
-        <section id="pricing" class="pricing-section">
-            <div class="container">
-                <h2>Специальное предложение для первых партнеров</h2>
-                <p class="section-subtitle">Мы запускаем наш сервис в Беларуси и предлагаем уникальные условия для первых компаний, которые готовы протестировать нашу технологию. Это лучшая возможность получить максимальный результат за минимальную цену.</p>
-                <div class="pricing-grid">
-                    <div class="pricing-card">
-                        <h3>«Тест-драйв»</h3>
-                        <p class="pricing-card-desc">Оцените качество нашей AI-персонализации на вашей существующей базе контактов.</p>
-                        <div class="price">150 BYN</div>
-                        <div class="price-detail">до 300 контактов (0.5 BYN/лид)</div>
-                        <ul>
-                            <li>✓ Аудит вашей базы</li>
-                            <li>✓ AI-анализ каждого контакта</li>
-                            <li>✓ Генерация и отправка писем</li>
-                            <li>✓ Базовый отчет по кампании</li>
-                        </ul>
-                        <a href="index.html#contact" class="cta-button card-cta">Начать с теста</a>
-                    </div>
-                    <div class="pricing-card popular">
-                        <div class="popular-badge">Лучшая цена</div>
-                        <h3>«Первый партнер»</h3>
-                        <p class="pricing-card-desc">Полный цикл "под ключ": мы создадим для вас эксклюзивную базу и запустим кампанию по беспрецедентной цене.</p>
-                        <div class="price">300 BYN</div>
-                        <div class="price-detail">500 целевых лидов (0.6 BYN/лид)</div>
-                        <ul>
-                            <li>✓ Анализ вашей Целевой Аудитории</li>
-                            <li>✓ <strong>Формирование эксклюзивной базы (500 контактов)</strong></li>
-                            <li>✓ AI-фильтрация и обогащение данных</li>
-                            <li>✓ AI-персонализация и отправка писем</li>
-                            <li>✓ Расширенный аналитический отчет</li>
-                        </ul>
-                        <a href="index.html#contact" class="cta-button card-cta">Стать первым партнером</a>
-                    </div>
-                     <div class="pricing-card">
-                        <h3>«Стратегический»</h3>
-                        <p class="pricing-card-desc">Долгосрочное сотрудничество для компаний, которым нужен постоянный поток новых клиентов.</p>
-                        <div class="price">от 500 BYN/мес</div>
-                        <div class="price-detail">Индивидуальные условия</div>
-                        <ul>
-                            <li>✓ Все из тарифа "Первый партнер"</li>
-                            <li>✓ Ежемесячное обновление и пополнение базы</li>
-                            <li>✓ A/B тестирование и оптимизация</li>
-                            <li>✓ Приоритетная поддержка</li>
-                            <li>✓ Работа с оплатой за результат (KPI)</li>
-                        </ul>
-                        <a href="index.html#contact" class="cta-button card-cta">Обсудить партнерство</a>
-                    </div>
-                </div>
-                <p class="pricing-note">Предложение ограничено и действует только для первых 10 компаний-партнеров. После завершения тестового периода цены будут пересмотрены.</p>
+    <section>
+        <div class="container">
+            <div class="page-title">
+                <h1>Выберите ваш формат работы</h1>
+                <p>Вы можете начать с тест-драйва, заказать формирование базы (актив) или передать нам процесс лидогенерации под ключ.</p>
             </div>
-        </section>
-        
-        <section class="faq-section">
-            <div class="container">
+
+            <div class="pricing-grid">
+                
+                <div class="price-card">
+                    <h3>Тест-Драйв</h3>
+                    <p class="price-desc">Для тех, кто хочет проверить качество данных и убедиться в наличии ЛПР.</p>
+                    <div class="price">300 BYN</div>
+                    <div class="price-sub">Единоразовый платеж</div>
+                    <ul class="price-list">
+                        <li><strong>50-70</strong> проверенных компаний</li>
+                        <li>Ручная и AI-верификация телефонов</li>
+                        <li>Поиск ЛПР (Директора/РОПы)</li>
+                        <li>Формат: Excel-файл</li>
+                        <li>Срок: 24 часа</li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-outline">Попробовать</a>
+                </div>
+
+                <div class="price-card featured">
+                    <div class="badge">Выбор Бизнеса</div>
+                    <h3>База под ключ</h3>
+                    <p class="price-desc">Ваш стратегический актив. Готовая база для отдела продаж на месяцы вперед.</p>
+                    <div class="price">990 BYN</div>
+                    <div class="price-sub">Работа Модуля 1 (AI Search)</div>
+                    <ul class="price-list">
+                        <li><strong>500+</strong> целевых компаний (ICP)</li>
+                        <li>Прямые мобильные номера Директоров</li>
+                        <li>Фильтр конкурентов и "мусора"</li>
+                        <li>Стратегия поиска и сегментация</li>
+                        <li>Вечный доступ к файлу</li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-primary">Заказать Актив</a>
+                </div>
+
+                <div class="price-card">
+                    <h3>Аутрич под ключ</h3>
+                    <p class="price-desc">Полный цикл. Мы ищем, пишем и передаем вам теплых клиентов.</p>
+                    <div class="price">2400 BYN</div>
+                    <div class="price-sub">Модуль 1 + Модуль 2 (AI Mail)</div>
+                    <ul class="price-list">
+                        <li><strong>Всё из тарифа "База"</strong></li>
+                        <li>Настройка домена (защита от спама)</li>
+                        <li>Написание цепочек писем</li>
+                        <li>Запуск персонализированной рассылки</li>
+                        <li>Передача ответов и заявок</li>
+                    </ul>
+                    <a href="index.html#contact" class="btn btn-outline">Обсудить проект</a>
+                </div>
+
+            </div>
+            
+            <p style="text-align: center; color: var(--text-secondary); font-size: 0.9rem;">
+                * Цены указаны без НДС. Возможна оплата по безналичному расчету.
+            </p>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <div class="page-title" style="margin-bottom: 3rem;">
                 <h2>Частые вопросы</h2>
-                 <div class="faq-item">
-                    <h4>Почему такие низкие цены?</h4>
-                    <p>Мы выходим на рынок и хотим наработать первые успешные кейсы в Беларуси. Вы получаете доступ к передовой технологии по цене, значительно ниже ее реальной стоимости, а мы — ценный опыт и обратную связь.</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>Что я получаю в тарифе "База"?</h4>
+                    <p>Вы получаете структурированный Excel-файл, где каждая строка — это проверенная компания, соответствующая вашему портрету клиента, с ФИО директора и его телефоном.</p>
                 </div>
                 <div class="faq-item">
-                    <h4>Что я получаю вместе с базой?</h4>
-                    <p>Вы получаете не просто Excel-файл. Вы получаете полный цикл услуги: сформированную под вас базу, написанные и отправленные по ней персонализированные письма, а также отчет о результатах кампании.</p>
+                    <h4>Как быстро вы соберете базу?</h4>
+                    <p>Благодаря AI-технологиям, процесс занимает от 24 до 48 часов после согласования критериев поиска (ICP).</p>
                 </div>
-                 <div class="faq-item">
-                    <h4>Какие гарантии результата?</h4>
-                    <p>На этапе тестирования мы не можем гарантировать конкретное количество встреч, так как это зависит от множества факторов, включая ваше предложение. Но мы гарантируем, что создадим для вас максимально качественную базу и доставим по ней письма, которые будут прочитаны.</p>
+                <div class="faq-item">
+                    <h4>Безопасна ли рассылка (Аутрич)?</h4>
+                    <p>Абсолютно. Мы используем технологию Safe-Send: письма отправляются с паузами, имитируя человека, а домен предварительно "прогревается". Это исключает попадание в спам.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Можно ли начать с малого?</h4>
+                    <p>Да, именно для этого мы сделали тариф "Тест-Драйв" за 300 BYN. Это минимальный риск, чтобы оценить качество нашей работы.</p>
                 </div>
             </div>
-        </section>
-    </main>
-    
+        </div>
+    </section>
+
     <footer id="contact" class="contact-section">
-         <div class="container">
+        <div class="container">
             <h2>Готовы стать первым?</h2>
-            <p class="section-subtitle">Свяжитесь с нами, чтобы забронировать место в числе первых партнеров и запустить вашу кампанию по специальной цене.</p>
+            <p class="contact-subtitle">Свяжитесь с нами, чтобы забронировать место в числе первых партнеров и запустить вашу кампанию по специальной цене.</p>
             <div class="contact-details">
                 <p><strong>Email:</strong> <a href="mailto:s.a.klesov@ailead.site">s.a.klesov@ailead.site</a></p>
                 <p><strong>Телефон:</strong> <a href="tel:+375445516200">+375 44 551 62 00</a></p>
-                <p>
+                <p class="social-links">
                     <a href="viber://chat?number=%2B375445516200" class="social-link">Viber</a> |
                     <a href="https://t.me/saklesov" target="_blank" class="social-link">Telegram</a> | 
                     <a href="https://t.me/ailead_site" target="_blank" class="social-link">Telegram (канал)</a>
@@ -125,14 +259,5 @@
         </div>
     </footer>
 
-    <!-- Плавающая кнопка CTA -->
-    <a href="pricing.html" class="floating-cta cta-button">Заказать Кампанию</a>
-
-    <script>
-        document.querySelector('.hamburger-menu').addEventListener('click', function() {
-            this.classList.toggle('active');
-            document.querySelector('.mobile-nav').classList.toggle('active');
-        });
-    </script>
 </body>
 </html>

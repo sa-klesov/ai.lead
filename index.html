@@ -18,7 +18,7 @@
 
     <style>
         /* =========================================
-           ОСНОВНЫЕ СТИЛИ
+           СТИЛИ (ОСТАЛИСЬ БЕЗ ИЗМЕНЕНИЙ)
            ========================================= */
         :root {
             --bg-color: #0B1120;
@@ -43,7 +43,7 @@
             color: var(--text-primary);
             margin: 0;
             line-height: 1.6;
-            scroll-behavior: smooth; /* Плавная прокрутка к контактам */
+            scroll-behavior: smooth;
         }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
@@ -65,27 +65,34 @@
         }
         .nav-desktop a:hover { color: #fff; }
 
-        /* --- ГЛАВНЫЙ ЭКРАН (HERO) --- */
-        .hero { 
-            padding: 6rem 0; /* Уменьшил отступ сверху, чтобы поднять текст */
-            text-align: center; 
+        /* --- КНОПКИ --- */
+        .cta-button {
+            display: inline-block; padding: 0.8rem 1.8rem; border-radius: 8px;
+            text-decoration: none; font-weight: 700; text-align: center; transition: 0.3s;
         }
-        .hero h1 { 
-            font-size: 3.5rem; 
-            font-weight: 800; 
-            line-height: 1.2; 
-            margin-bottom: 1.5rem; 
+        .btn-primary {
+            background-color: var(--accent-color); color: var(--bg-color);
         }
-        .hero p { 
-            font-size: 1.25rem; 
-            color: var(--text-secondary); 
-            max-width: 750px; 
-            margin: 0 auto; /* Убрал лишний отступ снизу, так как кнопок нет */
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.25); }
+        .btn-outline {
+            background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color);
+        }
+        .btn-outline:hover { background: rgba(56, 189, 248, 0.1); color: #fff; }
+
+        /* --- ГЛАВНЫЙ ЭКРАН --- */
+        .hero { padding: 6rem 0; text-align: center; }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem; }
+        .hero p { font-size: 1.25rem; color: var(--text-secondary); max-width: 750px; margin: 0 auto; }
+        
+        /* Стиль для маленькой кнопки */
+        .hero-small-btn {
+            margin-top: 2rem;
+            padding: 0.6rem 1.5rem; /* Уменьшенные отступы */
+            font-size: 0.95rem;     /* Аккуратный шрифт */
         }
 
-        /* --- ОБЩИЕ СТИЛИ СЕКЦИЙ --- */
+        /* --- СЕКЦИИ --- */
         section { padding: 6rem 0; border-top: 1px solid var(--border-color); }
-        
         .module-header { text-align: left; margin-bottom: 3rem; }
         .module-tag {
             display: inline-block; padding: 0.4rem 1rem; border-radius: 20px;
@@ -110,27 +117,18 @@
         .comp-item strong { display: block; color: #fff; margin-bottom: 0.2rem; }
         .comp-item span { font-size: 0.95rem; color: var(--text-secondary); }
 
-        /* --- ПОДВАЛ (КОНТАКТЫ) --- */
-        .contact-section { background-color: var(--bg-light); text-align: center; padding: 6rem 0; }
+        /* --- ПОДВАЛ --- */
+        .contact-section { background-color: var(--bg-light); text-align: center; padding: 6rem 0; border-top: 1px solid var(--border-color); }
         .contact-section h2 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800; }
-        /* Стиль подзаголовка как в pricing.html */
-        .contact-subtitle { 
-            color: var(--text-secondary); 
-            font-size: 1.25rem; /* Размер как section-subtitle */
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 4rem;
-        }
-        
+        .contact-subtitle { color: var(--text-secondary); font-size: 1.25rem; max-width: 800px; margin: 0 auto 4rem; }
         .contact-details p { font-size: 1.2rem; margin: 0.8rem 0; }
-        /* Ссылки без подчеркивания, цвет акцентный */
         .contact-details a { color: var(--accent-color); text-decoration: none; font-weight: 500; }
-        
+        .social-links { margin-top: 1rem; }
         .social-link { color: #fff; margin: 0 10px; text-decoration: none; opacity: 0.8; transition: 0.3s; }
         .social-link:hover { opacity: 1; color: var(--accent-color); }
         .copyright { margin-top: 4rem; opacity: 0.5; font-size: 0.9rem; }
 
-        /* --- АДАПТИВНОСТЬ --- */
+        /* --- АДАПТИВ --- */
         @media (max-width: 900px) {
             .hero h1 { font-size: 2.2rem; }
             .process-row, .comparison-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -147,7 +145,8 @@
                 <a href="#module-1">AI Search</a>
                 <a href="#module-2">AI Mail</a>
                 <a href="pricing.html">Цены</a>
-                <a href="#contact">Контакты</a> </nav>
+                <a href="#contact">Контакты</a>
+            </nav>
             <div style="font-size: 1.5rem; color: #fff; display: none;">☰</div>
         </div>
     </header>
@@ -156,19 +155,23 @@
         <div class="container">
             <h1>Две технологии на основе ИИ,<br>которые заменят отдел лидогенерации</h1>
             <p>
-                Мы разделили процесс продаж на два этапа: умный поиск ЛПР и персонализированная коммуникация. 
-                Используйте их вместе или по отдельности.
+                Мы агрегируем данные из сотен открытых источников. Система заменяет часы ручного поиска, 
+                моментально находя доступные контакты ЛПР и формируя базу для ваших продаж.
             </p>
+            
+            <div style="margin-top: 1rem;">
+                <a href="#contact" class="cta-button btn-primary hero-small-btn">Заказать</a>
             </div>
+        </div>
     </section>
 
     <section id="module-1">
         <div class="container">
             <div class="module-header">
                 <span class="module-tag" style="background: rgba(139, 92, 246, 0.15); color: var(--module-1-color);">Модуль 01</span>
-                <h2 class="module-title">AI LEAD Search (Разведка)</h2>
+                <h2 class="module-title">AI LEAD Search (Агрегация)</h2>
                 <p class="module-desc">
-                    Это ваш цифровой аналитик. Он сканирует интернет, находит прямые контакты руководителей и формирует вашу эксклюзивную базу клиентов. Больше никаких "холодных" звонков на общие номера.
+                    Это ваш цифровой аналитик. Он сканирует цифровой след компаний, объединяя разрозненные данные из открытых источников в единую структуру. Мы находим то, на что у менеджера ушли бы недели.
                 </p>
             </div>
 
@@ -176,57 +179,57 @@
             <div class="process-row">
                 <div class="process-card">
                     <div class="process-num" style="color: var(--module-1-color);">01</div>
-                    <h4>Анализ ICP</h4>
-                    <p>Мы загружаем критерии вашего идеального клиента (отрасль, регион, оборот) в систему.</p>
+                    <h4>Поиск по критериям</h4>
+                    <p>Ищем компании по вашему портрету (ICP) в реестрах, картах и бизнес-каталогах.</p>
                 </div>
                 <div class="process-card">
                     <div class="process-num" style="color: var(--module-1-color);">02</div>
-                    <h4>Глубокий скан</h4>
-                    <p>AI прочесывает тысячи сайтов и реестров в реальном времени, отбирая подходящие компании.</p>
+                    <h4>OSINT Анализ</h4>
+                    <p>AI проверяет десятки открытых источников, собирая информацию о руководстве.</p>
                 </div>
                 <div class="process-card">
                     <div class="process-num" style="color: var(--module-1-color);">03</div>
-                    <h4>Поиск ЛПР</h4>
-                    <p>Находим ФИО директоров и их <strong>мобильные телефоны</strong>, скрытые из открытого доступа.</p>
+                    <h4>Сбор Контактов</h4>
+                    <p>Агрегируем доступные телефоны и email директоров (для ТОП-компаний) и общие контакты (для остальных).</p>
                 </div>
                 <div class="process-card">
                     <div class="process-num" style="color: var(--module-1-color);">04</div>
-                    <h4>Фильтрация</h4>
-                    <p>Удаляем конкурентов, дубли и мертвые фирмы. Выгружаем чистый Excel.</p>
+                    <h4>Валидация</h4>
+                    <p>Отсеиваем "мертвые" сайты и ликвидированные фирмы. Вы получаете живую базу.</p>
                 </div>
             </div>
 
             <div class="comparison-wrapper">
-                <div class="comparison-title">Сравнение подходов к сбору базы</div>
+                <div class="comparison-title">Почему это эффективнее ручного поиска?</div>
                 <div class="comparison-grid">
                     <div class="comp-col">
-                        <h4 style="color: #ef4444;">❌ Обычная покупка базы</h4>
+                        <h4 style="color: #ef4444;">❌ Ручной поиск менеджером</h4>
                         <div class="comp-item">
-                            <strong>Актуальность</strong>
-                            <span>Данные собраны год назад. Телефоны не работают.</span>
+                            <strong>Скорость</strong>
+                            <span>1 контакт = 15-20 минут поиска в Google и соцсетях.</span>
                         </div>
                         <div class="comp-item">
-                            <strong>Контакты</strong>
-                            <span>Только городские номера секретарей и info@ почты.</span>
+                            <strong>Охват</strong>
+                            <span>Менеджер устает и проверяет только 1-2 источника.</span>
                         </div>
                         <div class="comp-item">
-                            <strong>Чистота</strong>
-                            <span>В списке ваши конкуренты и закрытые компании.</span>
+                            <strong>Цена</strong>
+                            <span>Вы платите зарплату за часы "гугления", а не за продажи.</span>
                         </div>
                     </div>
                     <div class="comp-col">
                         <h4 style="color: var(--module-1-color);">✅ AI LEAD Search</h4>
                         <div class="comp-item">
-                            <strong>Актуальность</strong>
-                            <span>Scan-On-Demand. Данные проверяются в день заказа.</span>
+                            <strong>Скорость</strong>
+                            <span>Тысячи компаний обрабатываются за пару часов.</span>
                         </div>
                         <div class="comp-item">
-                            <strong>Контакты</strong>
-                            <span>Прямые мобильные телефоны ЛПР и личные email.</span>
+                            <strong>Охват</strong>
+                            <span>Глубокий анализ цифрового следа и кросс-проверка данных.</span>
                         </div>
                         <div class="comp-item">
-                            <strong>Чистота</strong>
-                            <span>Фильтр "Свой-Чужой". 99% целевых клиентов.</span>
+                            <strong>Цена</strong>
+                            <span>Вы получаете готовый результат в 10 раз дешевле часа работы сотрудника.</span>
                         </div>
                     </div>
                 </div>
@@ -240,7 +243,7 @@
                 <span class="module-tag" style="background: rgba(34, 197, 94, 0.15); color: var(--module-2-color);">Модуль 02</span>
                 <h2 class="module-title">AI LEAD Mail (Аутрич)</h2>
                 <p class="module-desc">
-                    Система умной коммуникации. Мы берем базу и начинаем диалог с каждым клиентом индивидуально. Это не рассылка, это имитация личной переписки в промышленных масштабах.
+                    Система умной коммуникации. Идеально работает в связке с Модулем 1. Если мы нашли личный email — пишем директору. Если общий — пишем персонализированный запрос на переключение.
                 </p>
             </div>
 
@@ -249,22 +252,22 @@
                 <div class="process-card">
                     <div class="process-num" style="color: var(--module-2-color);">01</div>
                     <h4>Анализ сайта</h4>
-                    <p>AI заходит на сайт каждого клиента из базы и читает их новости, раздел "О нас" и проекты.</p>
+                    <p>AI заходит на сайт клиента и находит "крючок": новость, проект или специфику деятельности.</p>
                 </div>
                 <div class="process-card">
                     <div class="process-num" style="color: var(--module-2-color);">02</div>
                     <h4>Генерация</h4>
-                    <p>На основе найденного пишется уникальное письмо. <i>"Видел вашу новость про..."</i></p>
+                    <p>Пишем письмо: <i>"Здравствуйте, видел ваш проект Х, хотим предложить решение для..."</i></p>
                 </div>
                 <div class="process-card">
                     <div class="process-num" style="color: var(--module-2-color);">03</div>
                     <h4>Safe-Send</h4>
-                    <p>Письма уходят поштучно с паузами, имитируя человека. Это гарантирует <strong>Inbox</strong>.</p>
+                    <p>Имитация ручной отправки. Паузы между письмами и прогрев домена для защиты от спама.</p>
                 </div>
                 <div class="process-card">
                     <div class="process-num" style="color: var(--module-2-color);">04</div>
                     <h4>Результат</h4>
-                    <p>Клиент отвечает вам. Вы получаете теплый лид, готовый к общению.</p>
+                    <p>Ваше письмо читают, потому что оно про клиента, а не шаблонная реклама.</p>
                 </div>
             </div>
 
@@ -272,33 +275,33 @@
                 <div class="comparison-title">Сравнение подходов к рассылке</div>
                 <div class="comparison-grid">
                     <div class="comp-col">
-                        <h4 style="color: #ef4444;">❌ Обычная рассылка</h4>
+                        <h4 style="color: #ef4444;">❌ Спам-рассылка</h4>
                         <div class="comp-item">
                             <strong>Содержание</strong>
-                            <span>Шаблон "Купите у нас". Один текст на всех.</span>
+                            <span>Одинаковый текст "Купите щебень" на 1000 адресов.</span>
                         </div>
                         <div class="comp-item">
                             <strong>Доставка</strong>
-                            <span>Массовая отправка (1000 писем в секунду). Попадание в СПАМ.</span>
+                            <span>Мгновенная блокировка спам-фильтрами.</span>
                         </div>
                         <div class="comp-item">
                             <strong>Реакция</strong>
-                            <span>Негатив, удаление, жалоба на спам.</span>
+                            <span>Раздражение и удаление без прочтения.</span>
                         </div>
                     </div>
                     <div class="comp-col">
                         <h4 style="color: var(--module-2-color);">✅ AI LEAD Mail</h4>
                         <div class="comp-item">
                             <strong>Содержание</strong>
-                            <span>Гипер-персонализация. Каждое письмо уникально.</span>
+                            <span>Каждое письмо уникально и привязано к бизнесу получателя.</span>
                         </div>
                         <div class="comp-item">
                             <strong>Доставка</strong>
-                            <span>Имитация человека. Высокая репутация домена. Inbox 95%+.</span>
+                            <span>Высокая репутация. Письма попадают во Входящие.</span>
                         </div>
                         <div class="comp-item">
                             <strong>Реакция</strong>
-                            <span>Интерес. Ответ: "Давайте обсудим".</span>
+                            <span>Интерес и уважение к подготовке. Начало диалога.</span>
                         </div>
                     </div>
                 </div>
@@ -313,7 +316,7 @@
             <div class="contact-details">
                 <p><strong>Email:</strong> <a href="mailto:s.a.klesov@ailead.site">s.a.klesov@ailead.site</a></p>
                 <p><strong>Телефон:</strong> <a href="tel:+375445516200">+375 44 551 62 00</a></p>
-                <p>
+                <p class="social-links">
                     <a href="viber://chat?number=%2B375445516200" class="social-link">Viber</a> |
                     <a href="https://t.me/saklesov" target="_blank" class="social-link">Telegram</a> | 
                     <a href="https://t.me/ailead_site" target="_blank" class="social-link">Telegram (канал)</a>

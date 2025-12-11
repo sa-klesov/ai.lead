@@ -18,22 +18,21 @@
 
     <style>
         /* =========================================
-           ОСНОВНЫЕ СТИЛИ И ПЕРЕМЕННЫЕ
+           ОСНОВНЫЕ СТИЛИ
            ========================================= */
         :root {
             --bg-color: #0B1120;
-            --bg-light: #1A2035;       /* Фон блоков */
-            --bg-darker: #0f172a;      /* Фон для контраста */
+            --bg-light: #1A2035;
+            --bg-darker: #0f172a;
             --text-primary: #FFFFFF;
             --text-secondary: #94A3B8;
-            --accent-color: #38BDF8;   /* Голубой */
+            --accent-color: #38BDF8;
             --highlight-color: #F59E0B;
             --border-color: rgba(255, 255, 255, 0.1);
             --font-main: 'Inter', sans-serif;
             
-            /* Цвета модулей для кодирования */
-            --module-1-color: #8b5cf6; /* Фиолетовый */
-            --module-2-color: #22c55e; /* Зеленый */
+            --module-1-color: #8b5cf6; 
+            --module-2-color: #22c55e; 
         }
 
         *, *::before, *::after { box-sizing: border-box; }
@@ -44,6 +43,7 @@
             color: var(--text-primary);
             margin: 0;
             line-height: 1.6;
+            scroll-behavior: smooth; /* Плавная прокрутка к контактам */
         }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
@@ -65,25 +65,23 @@
         }
         .nav-desktop a:hover { color: #fff; }
 
-        /* --- КНОПКИ --- */
-        .cta-button {
-            display: inline-block; padding: 0.8rem 1.8rem; border-radius: 8px;
-            text-decoration: none; font-weight: 700; text-align: center; transition: 0.3s;
+        /* --- ГЛАВНЫЙ ЭКРАН (HERO) --- */
+        .hero { 
+            padding: 6rem 0; /* Уменьшил отступ сверху, чтобы поднять текст */
+            text-align: center; 
         }
-        .btn-primary {
-            background-color: var(--accent-color); color: var(--bg-color);
+        .hero h1 { 
+            font-size: 3.5rem; 
+            font-weight: 800; 
+            line-height: 1.2; 
+            margin-bottom: 1.5rem; 
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(56, 189, 248, 0.25); }
-        .btn-outline {
-            background: transparent; border: 1px solid var(--accent-color); color: var(--accent-color);
+        .hero p { 
+            font-size: 1.25rem; 
+            color: var(--text-secondary); 
+            max-width: 750px; 
+            margin: 0 auto; /* Убрал лишний отступ снизу, так как кнопок нет */
         }
-        .btn-outline:hover { background: rgba(56, 189, 248, 0.1); color: #fff; }
-
-        /* --- ГЛАВНЫЙ ЭКРАН --- */
-        .hero { padding: 8rem 0; text-align: center; }
-        .hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem; }
-        .hero p { font-size: 1.25rem; color: var(--text-secondary); max-width: 750px; margin: 0 auto 3rem; }
-        .hero-btns { display: flex; gap: 1.5rem; justify-content: center; }
 
         /* --- ОБЩИЕ СТИЛИ СЕКЦИЙ --- */
         section { padding: 6rem 0; border-top: 1px solid var(--border-color); }
@@ -96,41 +94,38 @@
         .module-title { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; color: #fff; }
         .module-desc { font-size: 1.15rem; color: var(--text-secondary); max-width: 800px; }
 
-        /* --- СЕТКА ПРОЦЕССА (STEP BY STEP) --- */
-        .process-row {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 4rem;
-        }
-        .process-card {
-            background: var(--bg-light); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); position: relative;
-        }
-        .process-num {
-            font-size: 3rem; font-weight: 800; opacity: 0.3; margin-bottom: 0.5rem; line-height: 1;
-        }
+        /* --- ПРОЦЕСС --- */
+        .process-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 4rem; }
+        .process-card { background: var(--bg-light); padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); }
+        .process-num { font-size: 3rem; font-weight: 800; opacity: 0.3; margin-bottom: 0.5rem; line-height: 1; }
         .process-card h4 { font-size: 1.2rem; margin-bottom: 0.5rem; color: #fff; }
         .process-card p { font-size: 0.95rem; color: var(--text-secondary); margin: 0; }
 
-        /* --- БЛОК СРАВНЕНИЯ --- */
-        .comparison-wrapper {
-            background: rgba(255,255,255,0.03); padding: 3rem; border-radius: 16px; border: 1px solid var(--border-color);
-        }
+        /* --- СРАВНЕНИЕ --- */
+        .comparison-wrapper { background: rgba(255,255,255,0.03); padding: 3rem; border-radius: 16px; border: 1px solid var(--border-color); }
         .comparison-title { text-align: center; margin-bottom: 2rem; font-size: 1.5rem; font-weight: 700; }
         .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-        
         .comp-col h4 { font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
-        .comp-item {
-            margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
+        .comp-item { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .comp-item strong { display: block; color: #fff; margin-bottom: 0.2rem; }
         .comp-item span { font-size: 0.95rem; color: var(--text-secondary); }
 
         /* --- ПОДВАЛ (КОНТАКТЫ) --- */
         .contact-section { background-color: var(--bg-light); text-align: center; padding: 6rem 0; }
         .contact-section h2 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800; }
-        .contact-subtitle { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem; }
+        /* Стиль подзаголовка как в pricing.html */
+        .contact-subtitle { 
+            color: var(--text-secondary); 
+            font-size: 1.25rem; /* Размер как section-subtitle */
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
         
         .contact-details p { font-size: 1.2rem; margin: 0.8rem 0; }
+        /* Ссылки без подчеркивания, цвет акцентный */
         .contact-details a { color: var(--accent-color); text-decoration: none; font-weight: 500; }
-        .social-links { margin-top: 1rem; }
+        
         .social-link { color: #fff; margin: 0 10px; text-decoration: none; opacity: 0.8; transition: 0.3s; }
         .social-link:hover { opacity: 1; color: var(--accent-color); }
         .copyright { margin-top: 4rem; opacity: 0.5; font-size: 0.9rem; }
@@ -138,7 +133,6 @@
         /* --- АДАПТИВНОСТЬ --- */
         @media (max-width: 900px) {
             .hero h1 { font-size: 2.2rem; }
-            .hero-btns { flex-direction: column; }
             .process-row, .comparison-grid { grid-template-columns: 1fr; gap: 2rem; }
             .nav-desktop { display: none; }
         }
@@ -153,23 +147,19 @@
                 <a href="#module-1">AI Search</a>
                 <a href="#module-2">AI Mail</a>
                 <a href="pricing.html">Цены</a>
-            </nav>
+                <a href="#contact">Контакты</a> </nav>
             <div style="font-size: 1.5rem; color: #fff; display: none;">☰</div>
         </div>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h1>Две технологии,<br>которые заменят отдел лидогенерации</h1>
+            <h1>Две технологии на основе ИИ,<br>которые заменят отдел лидогенерации</h1>
             <p>
                 Мы разделили процесс продаж на два этапа: умный поиск ЛПР и персонализированная коммуникация. 
                 Используйте их вместе или по отдельности.
             </p>
-            <div class="hero-btns">
-                <a href="pricing.html" class="cta-button btn-primary">Смотреть Тарифы</a>
-                <a href="#module-1" class="cta-button btn-outline">Узнать про модули</a>
             </div>
-        </div>
     </section>
 
     <section id="module-1">
@@ -318,12 +308,12 @@
 
     <footer id="contact" class="contact-section">
         <div class="container">
-            <h2>Готовы начать?</h2>
-            <p class="contact-subtitle">Свяжитесь с нами, чтобы обсудить детали и запустить вашу первую кампанию по специальной цене для первых партнеров.</p>
+            <h2>Готовы стать первым?</h2>
+            <p class="contact-subtitle">Свяжитесь с нами, чтобы забронировать место в числе первых партнеров и запустить вашу кампанию по специальной цене.</p>
             <div class="contact-details">
                 <p><strong>Email:</strong> <a href="mailto:s.a.klesov@ailead.site">s.a.klesov@ailead.site</a></p>
                 <p><strong>Телефон:</strong> <a href="tel:+375445516200">+375 44 551 62 00</a></p>
-                <p class="social-links">
+                <p>
                     <a href="viber://chat?number=%2B375445516200" class="social-link">Viber</a> |
                     <a href="https://t.me/saklesov" target="_blank" class="social-link">Telegram</a> | 
                     <a href="https://t.me/ailead_site" target="_blank" class="social-link">Telegram (канал)</a>

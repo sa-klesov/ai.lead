@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>AI LEAD — Поиск B2B клиентов по всей Беларуси</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Поиск B2B-клиентов под ваш бизнес по всем городам Беларуси. Анализируем ваш сайт и формируем базу из 500 целевых компаний с корпоративными контактами.">
+  <meta name="keywords" content="поиск B2B клиентов, база компаний Беларусь, корпоративные контакты, лидогенерация B2B">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0b0f1a 0%, #1a2035 100%);
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+    }
+
+    .content { max-width: 600px; }
+
+    .logo {
+      font-weight: 800;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    .logo span { color: #3B82F6; }
+
+    h1 {
+      font-size: 42px;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #94A3B8;
+      margin-bottom: 32px;
+    }
+    .subtitle strong { color: #fff; }
+
+    .benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .benefits div {
+      font-size: 16px;
+      color: #E2E8F0;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .benefits div::before {
+      content: "✓";
+      color: #10B981;
+      font-weight: 800;
+      background: rgba(16,185,129,0.1);
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 14px;
+    }
+
+    .offer-box {
+      background: rgba(59,130,246,0.1);
+      border-left: 4px solid #3B82F6;
+      padding: 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 28px;
+    }
+
+    .offer-text { font-size: 16px; margin-bottom: 6px; }
+    .offer-sub { font-size: 13px; color: #94A3B8; }
+
+    .price-tag {
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 18px;
+    }
+    .price-tag span { color: #3B82F6; font-size: 26px; }
+
+    .mobile-scroll-btn {
+      display: none;
+      margin-top: 20px;
+      width: 100%;
+      text-align: center;
+      background: #3B82F6;
+      color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .form-wrapper {
+      background: #1e293b;
+      border-radius: 16px;
+      padding: 35px;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .form-wrapper h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .form-wrapper p {
+      font-size: 14px;
+      color: #94A3B8;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    input {
+      background: #0f172a;
+      border: 1px solid #334155;
+      padding: 16px;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    button {
+      padding: 18px;
+      border-radius: 8px;
+      border: none;
+      background: #3B82F6;
+      color: #fff;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .form-note {
+      font-size: 12px;
+      color: #64748B;
+      margin-top: 15px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .container { flex-direction: column; }
+      h1 { font-size: 30px; }
+      .mobile-scroll-btn { display: block; }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="content">
+    <div class="logo">AI <span>LEAD</span></div>
+
+    <h1>
+      Поиск B2B-клиентов<br>
+      <span>под ваш бизнес по всем городам Беларуси</span>
+    </h1>
+
+    <div class="subtitle">
+      Наш ИИ анализирует <strong>ваш сайт</strong>, формирует портрет идеального клиента
+      и подбирает релевантные компании.
+    </div>
+
+    <div class="benefits">
+      <div>Работаем только с B2B-компаниями</div>
+      <div>Поиск по всем городам и регионам Беларуси</div>
+      <div>Используем только открытые и легальные источники данных</div>
+      <div>Актуальные корпоративные контакты компаний</div>
+      <div>Готовый файл с 500 целевыми компаниями</div>
+    </div>
+
+    <div class="offer-box">
+      <div class="offer-text">🎯 <strong>Бесплатный тест</strong></div>
+      <div class="offer-sub">
+        Экспресс-анализ ниши + <strong>пример базы из 20 компаний</strong> бесплатно
+      </div>
+    </div>
+
+    <div class="price-tag">
+      <span>390 BYN</span> — за <strong>500 целевых компаний</strong>
+    </div>
+
+    <a href="#form" class="mobile-scroll-btn">Получить пример базы (20 компаний)</a>
+  </div>
+
+  <div class="form-wrapper" id="form">
+    <h3>Получить пример базы (20 компаний)</h3>
+    <p>
+      Оставьте ссылку на ваш сайт. Мы проанализируем продукт
+      и пришлём <strong>пример базы из 20 компаний</strong>,
+      подходящих под ваш бизнес.
+    </p>
+
+    <form action="https://formsubmit.co/s.a.klesov@ailead.site" method="POST">
+      <input type="hidden" name="_subject" value="🔥 Новая заявка: Тест-драйв базы (AI LEAD)">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+
+      <input type="text" name="name" placeholder="Как к вам обращаться?" required>
+      <input type="text" name="contact" placeholder="Email или телефон" required>
+      <input type="url" name="site" placeholder="Ссылка на ваш сайт" required>
+
+      <button type="submit">Получить пример базы</button>
+    </form>
+
+    <div class="form-note">
+      Менеджер свяжется с вами в течение 15 минут.<br><br>
+      Email: <strong>s.a.klesov@ailead.site</strong><br>
+      <a href="https://t.me/saklesov" target="_blank" style="color:#3B82F6; text-decoration:none; border-bottom:1px dashed #3B82F6;">
+        Или напишите в Telegram
+      </a>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -6,12 +6,13 @@
   <!-- Yandex.Metrika counter --> <script type="text/javascript">     (function(m,e,t,r,i,k,a){         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};         m[i].l=1*new Date();         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106475003', 'ym');      ym(106475003, 'init', {ssr:true, webvisor:true, trackHash:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true}); </script>  <!-- /Yandex.Metrika counter -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Поиск B2B-клиентов под ваш бизнес по всем городам Беларуси. Анализируем ваш сайт и формируем базу из 500 целевых компаний с корпоративными контактами.">
-  <meta name="keywords" content="поиск B2B клиентов, база компаний Беларусь, корпоративные контакты, лидогенерация B2B">
+  <meta name="description" content="Поиск B2B-клиентов под ваш бизнес по всем городам Беларуси. Экономим время менеджеров: формируем базу целевых компаний с корпоративными контактами.">
+  <meta name="keywords" content="поиск B2B клиентов, база компаний Беларусь, корпоративные контакты, лидогенерация B2B, база клиентов">
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+    /* БАЗОВЫЕ НАСТРОЙКИ */
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -21,6 +22,7 @@
       min-height: 100vh;
     }
 
+    /* КОНТЕЙНЕР */
     .container {
       max-width: 1180px;
       margin: 0 auto;
@@ -31,6 +33,7 @@
       gap: 60px;
     }
 
+    /* ЛЕВАЯ КОЛОНКА */
     .content { max-width: 600px; }
 
     .logo {
@@ -60,6 +63,7 @@
     }
     .subtitle strong { color: #fff; }
 
+    /* СПИСОК ПРЕИМУЩЕСТВ */
     .benefits {
       display: flex;
       flex-direction: column;
@@ -72,7 +76,9 @@
       color: #E2E8F0;
       display: flex;
       gap: 12px;
-      align-items: center;
+      align-items: flex-start; /* Галочка всегда сверху */
+      font-weight: 400;        /* Обычный шрифт, не жирный */
+      line-height: 1.5;
     }
 
     .benefits div::before {
@@ -80,15 +86,17 @@
       color: #10B981;
       font-weight: 800;
       background: rgba(16,185,129,0.1);
-      width: 24px;
+      min-width: 24px;
       height: 24px;
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
       font-size: 14px;
+      margin-top: 2px;         /* Ровняем по первой строке */
     }
 
+    /* ОФФЕР (СИНИЙ БЛОК) */
     .offer-box {
       background: rgba(59,130,246,0.1);
       border-left: 4px solid #3B82F6;
@@ -100,13 +108,17 @@
     .offer-text { font-size: 16px; margin-bottom: 6px; }
     .offer-sub { font-size: 13px; color: #94A3B8; }
 
+    /* ЦЕНОВОЙ БЛОК */
     .price-tag {
-      font-size: 20px;
-      font-weight: 700;
       margin-top: 18px;
     }
-    .price-tag span { color: #3B82F6; font-size: 26px; }
+    .price-tag span { 
+      color: #3B82F6; 
+      font-size: 26px; 
+      font-weight: 700;
+    }
 
+    /* КНОПКА ДЛЯ МОБИЛЬНЫХ */
     .mobile-scroll-btn {
       display: none;
       margin-top: 20px;
@@ -120,6 +132,7 @@
       text-decoration: none;
     }
 
+    /* ПРАВАЯ КОЛОНКА (ФОРМА) */
     .form-wrapper {
       background: #1e293b;
       border-radius: 16px;
@@ -141,6 +154,7 @@
       line-height: 1.5;
     }
 
+    /* ПОЛЯ ВВОДА И КНОПКА */
     form {
       display: flex;
       flex-direction: column;
@@ -165,7 +179,10 @@
       font-weight: 600;
       font-size: 16px;
       cursor: pointer;
+      transition: background 0.2s;
     }
+    
+    button:hover { background: #2563EB; }
 
     .form-note {
       font-size: 12px;
@@ -175,13 +192,16 @@
       line-height: 1.5;
     }
 
+    /* АДАПТИВНОСТЬ */
     @media (max-width: 900px) {
       .container { flex-direction: column; }
       h1 { font-size: 30px; }
       .mobile-scroll-btn { display: block; }
+      .form-wrapper { padding: 25px; }
     }
   </style>
-</head>
+
+  </head>
 
 <body>
 
@@ -196,27 +216,35 @@
     </h1>
 
     <div class="subtitle">
-      Наш ИИ анализирует <strong>ваш сайт</strong>, формирует портрет идеального клиента
-      и подбирает релевантные компании.
+      Мы детально изучаем <strong>ваш сайт и продукт</strong>, чтобы найти компании,
+      которым действительно актуально ваше предложение.
     </div>
 
     <div class="benefits">
-      <div>Работаем только с B2B-компаниями</div>
-      <div>Поиск по всем городам и регионам Беларуси</div>
-      <div>Используем только открытые и легальные источники данных</div>
-      <div>Актуальные корпоративные контакты компаний</div>
-      <div>Готовый файл с 500 целевыми компаниями</div>
+      <div>Экономим время менеджеров: вместо недель ручного поиска — готовая выборка компаний</div>
+      <div>Только целевые B2B-компании под ваш запрос</div>
+      <div>Охват 100% городов и регионов Беларуси</div>
+      <div>Легальный сбор данных из открытых источников</div>
+      <div>Готовый Excel-файл: загрузил в CRM и начал работу</div>
     </div>
 
     <div class="offer-box">
-      <div class="offer-text">🎯 <strong>Бесплатный тест</strong></div>
+      <div class="offer-text">🎯 <strong>Бесплатный тест-драйв</strong></div>
       <div class="offer-sub">
-        Экспресс-анализ ниши + <strong>пример базы из 20 компаний</strong> бесплатно
+        Экспресс-анализ ниши + <strong>тестовая выборка (20 компаний)</strong> бесплатно
       </div>
     </div>
 
     <div class="price-tag">
-      <span>390 BYN</span> — за <strong>500 целевых компаний</strong>
+      <div style="font-size: 24px; color: #64748B; text-decoration: line-through; font-weight: 400; margin-bottom: 2px;">
+        550 BYN
+      </div>
+      
+      <span>390 BYN</span> — за <strong>формирование B2B-базы (до 500 компаний)</strong>
+    </div>
+    
+    <div style="font-size: 11px; color: #64748B; margin-top: 8px; line-height: 1.4; max-width: 450px;">
+        *Итоговое количество компаний зависит от критериев отбора и наличия данных в открытых источниках. Мы гарантируем качество выборки, а не просто количество строк.
     </div>
 
     <a href="#form" class="mobile-scroll-btn">Получить пример базы (20 компаний)</a>
@@ -231,23 +259,30 @@
     </p>
 
     <form action="https://formsubmit.co/s.a.klesov@ailead.site" method="POST">
-      <input type="hidden" name="_subject" value="🔥 Новая заявка: Тест-драйв базы (AI LEAD)">
+      
+      <input type="hidden" name="_subject" value="🔥 Заявка: Тест-драйв базы (AI LEAD)">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="table">
-
+      
       <input type="text" name="name" placeholder="Как к вам обращаться?" required>
       <input type="text" name="contact" placeholder="Email или телефон" required>
       <input type="url" name="site" placeholder="Ссылка на ваш сайт" required>
-
+      
       <button type="submit">Получить пример базы</button>
     </form>
 
     <div class="form-note">
       Менеджер свяжется с вами в течение 15 минут.<br><br>
+      
       Email: <strong>s.a.klesov@ailead.site</strong><br>
-      <a href="https://t.me/saklesov" target="_blank" style="color:#3B82F6; text-decoration:none; border-bottom:1px dashed #3B82F6;">
+      <a href="https://t.me/saklesov" target="_blank" style="color: #3B82F6; text-decoration: none; border-bottom: 1px dashed #3B82F6;">
         Или напишите в Telegram
       </a>
+      
+      <div style="margin-top: 15px; font-size: 11px; opacity: 0.6;">
+        Услуга предоставляется плательщиком НПД.<br>
+        Работаем официально.
+      </div>
     </div>
   </div>
 
@@ -255,4 +290,3 @@
 
 </body>
 </html>
-

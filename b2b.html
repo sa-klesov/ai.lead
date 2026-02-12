@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <title>AI LEAD — Поиск B2B клиентов по всей Беларуси и России</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="description" content="Поиск B2B-клиентов под ваш бизнес по всем городам Беларуси и России. Экономим время менеджеров: формируем базу целевых компаний с корпоративными контактами.">
-  <meta name="keywords" content="поиск B2B клиентов, база компаний Беларусь, корпоративные контакты, лидогенерация B2B, база клиентов">
+  <meta name="description"
+    content="Поиск B2B-клиентов под ваш бизнес по всем городам Беларуси и России. Экономим время менеджеров: формируем базу целевых компаний с корпоративными контактами.">
+  <meta name="keywords"
+    content="поиск B2B клиентов, база компаний Беларусь и Россия, корпоративные контакты, лидогенерация B2B, база клиентов">
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Yandex.Metrika counter --> <script type="text/javascript">     (function(m,e,t,r,i,k,a){         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};         m[i].l=1*new Date();         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106479473', 'ym');      ym(106479473, 'init', {ssr:true, webvisor:true, trackHash:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true}); </script>  <!-- /Yandex.Metrika counter -->
+  <!-- Yandex.Metrika counter -->
+  <script
+    type="text/javascript">     (function (m, e, t, r, i, k, a) { m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) }; m[i].l = 1 * new Date(); for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } } k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a) })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=106479473', 'ym'); ym(106479473, 'init', { ssr: true, webvisor: true, trackHash: true, clickmap: true, ecommerce: "dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce: true, trackLinks: true }); </script>
+  <!-- /Yandex.Metrika counter -->
   <style>
     /* БАЗОВЫЕ НАСТРОЙКИ */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -34,14 +44,19 @@
     }
 
     /* ЛЕВАЯ КОЛОНКА */
-    .content { max-width: 600px; }
+    .content {
+      max-width: 600px;
+    }
 
     .logo {
       font-weight: 800;
       font-size: 24px;
       margin-bottom: 30px;
     }
-    .logo span { color: #3B82F6; }
+
+    .logo span {
+      color: #3B82F6;
+    }
 
     h1 {
       font-size: 42px;
@@ -52,6 +67,7 @@
     h1 span {
       background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 100%);
       -webkit-background-clip: text;
+      background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
@@ -61,7 +77,10 @@
       color: #94A3B8;
       margin-bottom: 32px;
     }
-    .subtitle strong { color: #fff; }
+
+    .subtitle strong {
+      color: #fff;
+    }
 
     /* СПИСОК ПРЕИМУЩЕСТВ */
     .benefits {
@@ -76,8 +95,10 @@
       color: #E2E8F0;
       display: flex;
       gap: 12px;
-      align-items: flex-start; /* Галочка всегда сверху */
-      font-weight: 400;        /* Обычный шрифт, не жирный */
+      align-items: flex-start;
+      /* Галочка всегда сверху */
+      font-weight: 400;
+      /* Обычный шрифт, не жирный */
       line-height: 1.5;
     }
 
@@ -85,7 +106,7 @@
       content: "✓";
       color: #10B981;
       font-weight: 800;
-      background: rgba(16,185,129,0.1);
+      background: rgba(16, 185, 129, 0.1);
       min-width: 24px;
       height: 24px;
       display: flex;
@@ -93,28 +114,37 @@
       justify-content: center;
       border-radius: 50%;
       font-size: 14px;
-      margin-top: 2px;         /* Ровняем по первой строке */
+      margin-top: 2px;
+      /* Ровняем по первой строке */
     }
 
     /* ОФФЕР (СИНИЙ БЛОК) */
     .offer-box {
-      background: rgba(59,130,246,0.1);
+      background: rgba(59, 130, 246, 0.1);
       border-left: 4px solid #3B82F6;
       padding: 20px;
       border-radius: 0 8px 8px 0;
       margin-bottom: 28px;
     }
 
-    .offer-text { font-size: 16px; margin-bottom: 6px; }
-    .offer-sub { font-size: 13px; color: #94A3B8; }
+    .offer-text {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .offer-sub {
+      font-size: 13px;
+      color: #94A3B8;
+    }
 
     /* ЦЕНОВОЙ БЛОК */
     .price-tag {
       margin-top: 18px;
     }
-    .price-tag span { 
-      color: #3B82F6; 
-      font-size: 26px; 
+
+    .price-tag span {
+      color: #3B82F6;
+      font-size: 26px;
       font-weight: 700;
     }
 
@@ -130,7 +160,8 @@
       border-radius: 8px;
       font-weight: 600;
       text-decoration: none;
-      line-height: 1.4; /* Чтобы текст в две строки смотрелся хорошо */
+      line-height: 1.4;
+      /* Чтобы текст в две строки смотрелся хорошо */
     }
 
     /* ПРАВАЯ КОЛОНКА (ФОРМА) */
@@ -140,7 +171,7 @@
       padding: 35px;
       max-width: 440px;
       width: 100%;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
 
     .form-wrapper h3 {
@@ -183,8 +214,10 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-    
-    button:hover { background: #2563EB; }
+
+    button:hover {
+      background: #2563EB;
+    }
 
     .form-note {
       font-size: 12px;
@@ -195,100 +228,127 @@
     }
 
     /* АДАПТИВНОСТЬ */
+    .phone-link {
+      margin: 8px 0;
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(90deg, #60a5fa 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      transition: filter 0.3s ease;
+    }
+
+    .form-note {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .phone-link:hover {
+      filter: brightness(1.2);
+    }
+
     @media (max-width: 900px) {
-      .container { flex-direction: column; }
-      h1 { font-size: 30px; }
-      .mobile-scroll-btn { display: block; }
-      .form-wrapper { padding: 25px; }
+      .container {
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .mobile-scroll-btn {
+        display: block;
+      }
+
+      .form-wrapper {
+        padding: 25px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <div class="content">
-    <div class="logo">AI <span>LEAD</span></div>
+    <div class="content">
+      <div class="logo">AI <span>LEAD</span></div>
 
-    <h1>
-      Поиск B2B-клиентов<br>
-      <span>под ваш бизнес по всем городам Беларуси и России</span>
-    </h1>
+      <h1>
+        Поиск B2B-клиентов<br>
+        <span>под ваш бизнес по всем городам Беларуси и России</span>
+      </h1>
 
-    <div class="subtitle">
-      Мы детально изучаем <strong>ваш сайт и продукт</strong>, чтобы найти компании,
-      которым действительно актуально ваше предложение.
-    </div>
-
-    <div class="benefits">
-      <div>Экономим время менеджеров: вместо недель ручного поиска — готовая выборка компаний</div>
-      <div>Только целевые B2B-компании под ваш запрос</div>
-      <div>Охват 100% городов и регионов Беларуси и России</div>
-      <div>Легальный сбор данных из открытых источников</div>
-      <div>Готовый Excel-файл: загрузил в CRM и начал работу</div>
-    </div>
-
-    <div class="offer-box">
-      <div class="offer-text">🎯 <strong>Бесплатный тест-драйв</strong></div>
-      <div class="offer-sub">
-        Экспресс-анализ ниши + <strong>тестовая выборка<br>(20 компаний)</strong> бесплатно
+      <div class="subtitle">
+        Мы детально изучаем <strong>ваш сайт и продукт</strong>, чтобы найти компании,
+        которым действительно актуально ваше предложение.
       </div>
-    </div>
 
-    <div class="price-tag">
-      <div style="font-size: 24px; color: #64748B; text-decoration: line-through; font-weight: 400; margin-bottom: 2px;">
-        550 BYN
+      <div class="benefits">
+        <div>Экономим время менеджеров: вместо недель ручного поиска — готовая выборка компаний</div>
+        <div>Только целевые B2B-компании под ваш запрос</div>
+        <div>Охват 100% городов и регионов Беларуси и России</div>
+        <div>Легальный сбор данных из открытых источников</div>
+        <div>Готовый Excel-файл: загрузил в CRM и начал работу</div>
       </div>
-      
-      <span>390 BYN</span> — за <strong>формирование B2B-базы (до 500 компаний)</strong>
+
+      <div class="offer-box">
+        <div class="offer-text">🎯 <strong>Бесплатный тест-драйв</strong></div>
+        <div class="offer-sub">
+          Экспресс-анализ ниши + <strong>тестовая выборка<br>(20 компаний)</strong> бесплатно
+        </div>
+      </div>
+
+      <div class="price-tag">
+        <div
+          style="font-size: 24px; color: #64748B; text-decoration: line-through; font-weight: 400; margin-bottom: 2px;">
+          550 BYN
+        </div>
+
+        <span>390 BYN</span> — за <strong>формирование B2B-базы (до 500 компаний)</strong>
+      </div>
+
+
+
+      <a href="#form" class="mobile-scroll-btn">Получить пример базы<br>(20 компаний)</a>
     </div>
-    
-    <div style="font-size: 11px; color: #64748B; margin-top: 8px; line-height: 1.4; max-width: 450px;">
-        *Итоговое количество компаний зависит от критериев отбора и наличия данных в открытых источниках. Мы гарантируем качество выборки, а не просто количество строк.
-    </div>
 
-    <a href="#form" class="mobile-scroll-btn">Получить пример базы<br>(20 компаний)</a>
-  </div>
+    <div class="form-wrapper" id="form">
+      <h3>Получить пример базы<br>(20 компаний)</h3>
+      <p>
+        Оставьте ссылку на ваш сайт. Мы проанализируем продукт
+        и пришлём <strong>пример базы из 20 компаний</strong>,
+        подходящих под ваш бизнес.
+      </p>
 
-<div class="form-wrapper" id="form">
-    <h3>Получить пример базы<br>(20 компаний)</h3>
-    <p>
-      Оставьте ссылку на ваш сайт. Мы проанализируем продукт
-      и пришлём <strong>пример базы из 20 компаний</strong>,
-      подходящих под ваш бизнес.
-    </p>
+      <form action="https://formspree.io/f/xbdoveen" method="POST"
+        onsubmit="const btn = this.querySelector('button'); btn.innerText = '⏳ Отправка...'; btn.style.opacity = '0.7'; ym(106479473,'reachGoal','form_submit'); return true;">
 
-   <form action="https://formspree.io/f/xbdoveen" method="POST" onsubmit="const btn = this.querySelector('button'); btn.innerText = '⏳ Отправка...'; btn.style.opacity = '0.7'; ym(106479473,'reachGoal','form_submit'); return true;">
-      
-      <input type="text" name="name" placeholder="Как к вам обращаться?" required>
-      <input type="text" name="contact" placeholder="Email или телефон" required>
-      
-      <input type="text" name="site" placeholder="Сайт или название компании" required>
-      
-      <button type="submit">Получить пример базы</button>
-    </form>
+        <input type="text" name="name" placeholder="Как к вам обращаться?" required>
+        <input type="text" name="contact" placeholder="Email или телефон" required>
 
-     <div class="form-note">
+        <input type="text" name="site" placeholder="Сайт или название компании" required>
+
+        <button type="submit">Получить пример базы</button>
+      </form>
+
+      <div class="form-note">
         <a href="tel:+375445516200" class="phone-link">+375 44 551 62 00</a>
-        Email: <strong>s.a.klesov@ailead.site</strong><br>
+        <div>Email: <strong>s.a.klesov@ailead.site</strong></div>
         <a href="https://t.me/saklesov" target="_blank"
-          style="color: #3B82F6; text-decoration: none; border-bottom: 1px dashed #3B82F6;">
+          style="color: #3B82F6; text-decoration: none; border-bottom: 1px dashed #3B82F6; margin-top: 5px;">
           Или напишите в Telegram
         </a>
+      </div>
     </div>
+
   </div>
 
-</div>
-
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-

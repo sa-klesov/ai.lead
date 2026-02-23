@@ -179,7 +179,7 @@
             justify-content: center;
         }
 
-        /* --- Excel Mockup --- */
+        /* --- Excel Mockup (ОБНОВЛЕННАЯ ТАБЛИЦА) --- */
         .mockup-caption {
             text-align: right;
             max-width: 1000px;
@@ -193,7 +193,7 @@
         .excel-showcase {
             margin-top: 60px;
             position: relative;
-            max-width: 1000px;
+            max-width: 1100px;
             margin-left: auto;
             margin-right: auto;
             background: #ffffff;
@@ -216,32 +216,53 @@
             border-radius: 8px;
             border: 1px solid var(--border);
             text-align: left;
-            font-size: 13px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow-x: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .excel-inner {
+            min-width: 1740px; 
+        }
+        .excel-head, .excel-row {
+            display: grid;
+            grid-template-columns: 180px 170px 140px 110px 160px 150px 160px 150px 200px minmax(300px, 1fr);
         }
         .excel-head {
-            background: #f1f5f9;
-            display: grid;
-            grid-template-columns: 2fr 2fr 2fr 2.5fr 3fr;
+            background: #f8fafc;
+            border-bottom: 2px solid var(--border);
+        }
+        .excel-head > div {
             padding: 12px 16px;
             font-weight: 700;
+            font-size: 13px;
             color: var(--text-main);
-            border-bottom: 2px solid #cbd5e1;
-        }
-        .excel-row {
-            display: grid;
-            grid-template-columns: 2fr 2fr 2fr 2.5fr 3fr;
-            padding: 14px 16px;
-            border-bottom: 1px solid var(--border);
-            color: var(--text-muted);
+            border-right: 1px solid var(--border);
+            display: flex;
             align-items: center;
         }
-        .excel-row:last-child { border-bottom: none; }
-        .excel-row span.green { color: var(--success); font-weight: 700; font-size: 14px;}
-        .excel-row span.dark { color: var(--dark); font-weight: 700; }
+        .excel-row {
+            border-bottom: 1px solid #e2e8f0;
+            align-items: stretch;
+        }
+        .excel-row > div {
+            padding: 12px 16px;
+            border-right: 1px solid #e2e8f0;
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.4;
+            word-break: break-word;
+        }
+        .excel-head > div:last-child, .excel-row > div:last-child {
+            border-right: none;
+        }
+        .excel-row:last-child { 
+            border-bottom: none; 
+        }
+        .excel-row span.green { color: var(--success); font-weight: 700; font-size: 13px;}
+        .excel-row .dark { color: var(--dark); font-weight: 700; }
+        .excel-row a { color: var(--primary); text-decoration: none; font-weight: 500;}
+        .excel-row a:hover { text-decoration: underline; }
         .redacted {
-            filter: blur(3px);
+            filter: blur(4px);
             opacity: 0.6;
             user-select: none;
             display: inline-block;
@@ -381,6 +402,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 32px;
+            align-items: stretch;
         }
         .case-card {
             background: #fff;
@@ -388,6 +410,8 @@
             padding: 40px;
             border: 1px solid var(--border);
             box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
         }
         .case-tag {
             display: inline-block;
@@ -398,6 +422,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 20px;
+            align-self: flex-start;
         }
         .case-tag.logistics { background: #dcfce7; color: #166534; }
         .case-tag.tech { background: #fef08a; color: #854d0e; }
@@ -409,13 +434,17 @@
             line-height: 1.3;
         }
         .case-result {
-            margin-top: 24px;
+            margin-top: auto;
             padding-top: 24px;
             border-top: 1px solid var(--border);
         }
+        .case-result p {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
         .case-result ul {
             list-style: none;
-            margin-bottom: 24px;
         }
         .case-result li {
             position: relative;
@@ -741,6 +770,24 @@
             font-size: 14px;
             margin-bottom: 8px;
         }
+        .footer-contacts {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            color: #94a3b8;
+            font-size: 15px;
+        }
+        .footer-contacts a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        .footer-contacts a:hover {
+            color: var(--primary);
+        }
         .legal-text {
             font-size: 12px;
             color: #64748b;
@@ -763,6 +810,7 @@
             .excel-row { grid-template-columns: 1fr; gap: 8px; padding: 20px; }
             .header-inner { flex-direction: column; gap: 10px; }
             .header-contacts { text-align: center; }
+            .footer-contacts { flex-direction: column; gap: 12px; }
         }
     </style>
 </head>
@@ -793,26 +841,58 @@
             <div class="mockup-caption">Фрагмент реальной выгрузки (данные частично скрыты)</div>
             <div class="excel-showcase">
                 <div class="excel-mockup">
-                    <div class="excel-head">
-                        <div>Название компании</div>
-                        <div>Сайт / Источник</div>
-                        <div>Email</div>
-                        <div>Телефоны (ЛПР / Гор)</div>
-                        <div>Описание бизнеса</div>
-                    </div>
-                    <div class="excel-row">
-                        <div class="dark">ООО "АВТОРЕАЛ"</div>
-                        <div>avtoreal.by</div>
-                        <div>avtorealgomel<span class="redacted">@mail.ru</span></div>
-                        <div><span class="green">+375 29 678-0<span class="redacted">4-03</span></span><br>8 0232 53-9<span class="redacted">3-70</span></div>
-                        <div>Магазин автозапчастей. В наличии и под заказ кузовные детали, оптика...</div>
-                    </div>
-                    <div class="excel-row">
-                        <div class="dark">100CAPTAINS</div>
-                        <div>100captains.ru</div>
-                        <div>100captains<span class="redacted">@gmail.com</span></div>
-                        <div><span class="green">+7 (927) 112-3<span class="redacted">0-80</span></span><br>+7 (495) 248-1<span class="redacted">8-10</span></div>
-                        <div>Яхтенная школа. Платформа онлайн-курсов для подготовки шкиперов...</div>
+                    <div class="excel-inner">
+                        <div class="excel-head">
+                            <div>Название компании</div>
+                            <div>Email</div>
+                            <div>Сайт</div>
+                            <div>Статус</div>
+                            <div>Телефон 1</div>
+                            <div>Описание 1</div>
+                            <div>Телефон 2</div>
+                            <div>Описание 2</div>
+                            <div>Адрес</div>
+                            <div>Описание бизнеса</div>
+                        </div>
+                        
+                        <div class="excel-row">
+                            <div class="dark">ООО "СтальПрокат"</div>
+                            <div>zakupki<span class="redacted">@stalprokat.by</span></div>
+                            <div><a href="#" target="_blank">stalprokat.by</a></div>
+                            <div>⭐ TOP</div>
+                            <div><span class="green">+375 29 344-<span class="redacted">11-22</span></span></div>
+                            <div style="font-weight: 600; color: var(--dark);">Отдел снабжения</div>
+                            <div><span class="green">+375 17 222-<span class="redacted">33-44</span></span></div>
+                            <div>Отдел продаж</div>
+                            <div>г. Минск, пр-т Промышленный, 12</div>
+                            <div>Производство и оптовая продажа металлопроката. Арматура, трубы, листовой металл для B2B сектора. Крупный импортер...</div>
+                        </div>
+
+                        <div class="excel-row">
+                            <div class="dark">Магазин "Южный"</div>
+                            <div>director<span class="redacted">@yuzhniy.by</span></div>
+                            <div><a href="#" target="_blank">yuzhniy.by</a></div>
+                            <div>⭐ TOP</div>
+                            <div><span class="green">+375 29 232-<span class="redacted">41-23</span></span></div>
+                            <div style="font-weight: 600; color: var(--dark);">Руководитель (ЛПР)</div>
+                            <div><span class="green">+375 33 315-<span class="redacted">85-44</span></span></div>
+                            <div>Бухгалтерия</div>
+                            <div>г. Мозырь, промузел Козенки, 51</div>
+                            <div>Сеть магазинов стройматериалов. Широкий ассортимент отделочных материалов, сухие строительные смеси, теплоизоляция...</div>
+                        </div>
+
+                        <div class="excel-row">
+                            <div class="dark">Alexbus.by</div>
+                            <div>b2b<span class="redacted">@alexbus.by</span></div>
+                            <div><a href="#" target="_blank">alexbus.by</a></div>
+                            <div>⭐ TOP</div>
+                            <div><span class="green">+375 29 631-<span class="redacted">01-33</span></span></div>
+                            <div style="font-weight: 600; color: var(--dark);">Коммерческий отдел</div>
+                            <div><span class="green">+375 33 344-<span class="redacted">55-66</span></span></div>
+                            <div>Диспетчерская</div>
+                            <div>г. Минск, ул. Ольшевского, 24</div>
+                            <div>Пассажирские перевозки, аренда микроавтобусов с водителем. Корпоративные поездки, обслуживание мероприятий и B2B трансферы...</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -922,39 +1002,33 @@
             <div class="case-grid">
                 <div class="case-card">
                     <div class="case-tag logistics">Кейс: Логистика (РФ-РБ)</div>
-                    <h3>Поиск импортеров для грузоперевозок</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 14px;">
-                        <strong>Задача:</strong> Найти торговые компании в РБ, которые отгружаются на маркетплейсы или закупают товары в РФ.
+                    <h3>Поиск импортеров и селлеров для грузоперевозок</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 14px;">
+                        <strong>Задача:</strong> Найти торговые компании, строительные магазины и бренды одежды в РБ, которые отгружаются на маркетплейсы (WB/Ozon) или регулярно закупают товары в России.
                     </p>
                     <div class="case-result">
+                        <p>Как мы решили задачу:</p>
                         <ul>
-                            <li>Собрали <strong>590</strong> целевых компаний.</li>
-                            <li>Исключили агросектор и локальных частников.</li>
+                            <li>Собрали <strong>590</strong> целевых компаний (от известных брендов одежды до крупных дилеров стройматериалов).</li>
+                            <li>Исключили по Anti-ICP: агросектор, скоропортящиеся продукты питания (мясо/овощи) и локальных частников.</li>
+                            <li>Предоставили полные профили: сайты, актуальные email для рассылок и корпоративные мобильные телефоны.</li>
                         </ul>
-                        <div class="case-economics">
-                            <div><span>Стоимость базы:</span> <strong>390 BYN</strong></div>
-                            <div><span>Закрыто сделок:</span> <strong>~5 отгрузок</strong></div>
-                            <div><span>Окупаемость:</span> <strong>Менее недели</strong></div>
-                        </div>
                     </div>
                 </div>
 
                 <div class="case-card">
                     <div class="case-tag tech">Кейс: B2B Услуги (Телематика)</div>
-                    <h3>Поиск автопарков для GPS-мониторинга</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 14px;">
-                        <strong>Задача:</strong> Найти коммерческие компании со своим автопарком для контроля водителей.
+                    <h3>Поиск автопарков для внедрения GPS-мониторинга</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 14px;">
+                        <strong>Задача:</strong> Найти коммерческие компании (службы доставки, прокат авто, пассажирские перевозки), которым нужно отслеживать маршруты и регулярно снижать расходы на топливо в РБ.
                     </p>
                     <div class="case-result">
+                        <p>Как мы решили задачу:</p>
                         <ul>
-                            <li>Собрали <strong>500</strong> компаний по всей Беларуси.</li>
-                            <li>Исключили "неповоротливый" госсектор.</li>
+                            <li>Собрали <strong>500</strong> живых компаний (от локальных служб проката и такси до крупных грузовых автоперевозчиков).</li>
+                            <li>Исключили по Anti-ICP: государственные заводы, неповоротливые ОАО/ЗАО и микро-бизнес без своего автопарка.</li>
+                            <li>Предоставили полные профили: сайты, актуальные email для рассылок и прямые мобильные телефоны.</li>
                         </ul>
-                        <div class="case-economics">
-                            <div><span>Стоимость базы:</span> <strong>390 BYN</strong></div>
-                            <div><span>Договоров на тест:</span> <strong>7 автопарков</strong></div>
-                            <div><span>Окупаемость:</span> <strong>В первые дни работы</strong></div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -995,8 +1069,11 @@
                     «Все звонки живые, контакты актуальные, попадание точно в тех людей, которые были заявлены. В 90% случаев — это абсолютно целевые лиды, которых менеджеры сразу взяли в воронку. Алгоритм работает отлично, экономит кучу времени.»
                 </div>
                 <div class="review-author">
-                    <div class="author-avatar">
-                        <span style="font-size: 10px;">LOGO<br>MONITORING</span>
+                    <div class="author-avatar" style="background: #ffffff; flex-direction: column; gap: 2px; padding: 0;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                        <span style="font-size: 8px; font-weight: 800; letter-spacing: 0.5px; color: var(--dark);">MONITORING</span>
                     </div>
                     <div class="author-info">
                         <h4>Сергей</h4>
